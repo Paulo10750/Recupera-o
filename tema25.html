@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 25: Sistemas Genital e Urinário Humanos 🚽🚹🚺</title>
+    <style>
+        :root {
+            --primary-color: #457b9d; /* Azul sutil para fluidos e equilíbrio corporal */
+            --secondary-color: #a8dadc; /* Azul pastel suave */
+            --accent-pink: #f4a261; /* Coral/Laranja suave para hormônios */
+            --female-color: #e29578; /* Rosa antigo fofo para sistema feminino */
+            --bg-color: #f7fafd; 
+            --card-bg: #ffffff;
+            --text-color: #2b2d42; 
+            --button-color: #4ea8de;
+            --purple-badge: #9c8cb9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', 'Segoe UI', Quicksand, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding-top: 100px; /* Espaço para o menu fixo cute */
+        }
+
+        /* BARRA DO TOPO ESTILO DE APLICATIVO FOFINHO */
+        .top-app-bar {
+            background-color: #ffffff;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(69, 123, 157, 0.08);
+            border-bottom: 3px dashed #e2edf5;
+            padding: 10px 0 5px 0;
+        }
+
+        /* Três Pontinhos Decorativos */
+        .decor-dots {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+
+        .decor-dots span {
+            width: 8px;
+            height: 8px;
+            background-color: var(--button-color);
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+        .decor-dots span:nth-child(2) { background-color: var(--accent-pink); }
+        .decor-dots span:nth-child(3) { background-color: var(--purple-badge); }
+
+        /* MENU EM LINHA RETA COM ARRASTE EM TOUCH (SCROLL HORIZONTAL) */
+        nav {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 5px 20px 10px 20px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none; /* Firefox */
+        }
+
+        nav::-webkit-scrollbar {
+            display: none; /* Chrome, Safari e Edge */
+        }
+
+        nav a {
+            display: inline-block;
+            color: #7fa2b5;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+            padding: 8px 18px;
+            background-color: #f1f6f9;
+            border-radius: 20px;
+            border: 2px solid transparent;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        nav a:hover {
+            background-color: #e2edf5;
+            color: var(--primary-color);
+            transform: scale(1.05);
+        }
+
+        nav a.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+            box-shadow: 0 4px 10px rgba(69, 123, 157, 0.2);
+        }
+
+        /* CABEÇALHO HERO */
+        header {
+            background: linear-gradient(135deg, #e3f2fd, #fce4ec);
+            color: var(--primary-color);
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 30px;
+            max-width: 1060px;
+            margin: 20px auto 10px auto;
+            border: 3px dashed #bbdefb;
+        }
+
+        header h1 {
+            font-size: 2.1rem;
+            margin-bottom: 10px;
+            color: #1d3557;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: #457b9d;
+            font-weight: 500;
+        }
+
+        /* CONTAINER PRINCIPAL */
+        .container {
+            max-width: 1060px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        /* TÍTULOS DE SEÇÃO */
+        .section-title {
+            color: #1d3557;
+            margin: 35px 0 15px 5px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* CARTÕES CUTE */
+        .card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 28px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 24px rgba(180, 198, 210, 0.15);
+            border: 1px solid #edf2f7;
+            position: relative;
+        }
+
+        .page-badge {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 4px 14px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .pink-badge {
+            background-color: #d14973;
+        }
+
+        .blue-badge {
+            background-color: #2a6f97;
+        }
+
+        ul {
+            list-style-position: inside;
+            margin-left: 5px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            padding-left: 5px;
+        }
+
+        strong {
+            color: var(--primary-color);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        @media (max-width: 500px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .sub-card {
+            background: #f8fafc;
+            border-left: 5px solid var(--secondary-color);
+            padding: 16px;
+            margin-top: 12px;
+            border-radius: 12px;
+        }
+
+        .alert-box {
+            background-color: #fffaf0;
+            border-left: 5px solid var(--accent-pink);
+            padding: 18px;
+            border-radius: 16px;
+            margin-top: 15px;
+            color: #7f4f24;
+        }
+
+        /* BOTÕES DE NAVEGAÇÃO INTER-PÁGINAS */
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            gap: 15px;
+        }
+
+        .btn {
+            background-color: var(--button-color);
+            color: white;
+            text-decoration: none;
+            padding: 14px 30px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1rem;
+            box-shadow: 0 6px 15px rgba(78, 168, 222, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #2a6f97;
+            transform: translateY(-3px);
+        }
+
+        .btn-prev {
+            background-color: #95a5a6;
+            box-shadow: 0 6px 15px rgba(149, 165, 166, 0.3);
+        }
+        .btn-prev:hover { background-color: #7f8c8d; }
+
+        footer {
+            background-color: #e3f2fd;
+            color: #1d3557;
+            text-align: center;
+            padding: 25px 20px;
+            margin-top: 60px;
+            font-weight: bold;
+            border-top: 3px dashed #bbdefb;
+            border-radius: 30px 30px 0 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-app-bar">
+        <div class="decor-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav>
+            <a href="index.html">Tema 7 🌿</a>
+            <a href="tema13.html">Tema 13 🐠</a>
+            <a href="tema14.html">Tema 14 🐸</a>
+            <a href="tema15.html">Tema 15 🧽</a>
+            <a href="tema16.html">Tema 16 🐆</a>
+           <a href="tema17.html">Tema 17 ⚜️</a>
+            <a href="tema25.html" class="active">Tema 25 🚽</a>
+            <a href="tema26.html">Tema 26 🍂</a>
+            <a href="tema27.html">Tema 27 🍄</a>
+        </nav>
+    </div>
+
+    <header>
+        <h1>Tema 25: Sistemas Genital e Urinário Humanos ✨</h1>
+        <p>Homeostase, Reprodução e Ciclos Biológicos (Páginas 279 a 286)</p>
+    </header>
+
+    <div class="container">
+
+        <h2 class="section-title">🚽 1. Sistema Urinário Humano</h2>
+        <div class="card">
+            <span class="page-badge">Págs. 279 a 281</span>
+            <p>Sua principal função é filtrar o sangue circulante para remover resíduos metabólicos tóxicos (como a <strong>ureia</strong>) e regular minuciosamente a concentração de água e sais minerais no organismo corporal (processo chamado de <strong>osmorregulação</strong>).</p>
+            
+            <div class="grid-2">
+                <div class="sub-card">
+                    <strong>Órgãos do Sistema Urinário:</strong><br>
+                    • <strong>Rins (2):</strong> Órgãos principais em formato de feijão que filtram ativamente o sangue e geram a urina.<br>
+                    • <strong>Ureteres (2):</strong> Condutos musculares que realizam o transporte da urina dos rins até a bexiga.<br>
+                    • <strong>Bexiga Urinária:</strong> Reservatório muscular oco que armazena a urina de modo temporário.<br>
+                    • <strong>Uretra:</strong> Canal final responsável pela condução e eliminação da urina para fora do corpo.
+                </div>
+
+                <div class="sub-card" style="border-left-color: var(--purple-badge);">
+                    <strong>A Unidade Filtradora: O Néfron</strong><br>
+                    Cada rim abriga aproximadamente 1 milhão de néfrons. A urina é formada em três etapas ordenadas:<br>
+                    1. <strong>Filtração:</strong> O sangue sob alta pressão entra no glomérulo. Água, sais, glicose e ureia passam para a cápsula renal, formando o <em>filtrado glomerular</em>. Proteínas grandes e células sanguíneas não passam.<br>
+                    2. <strong>Reabsorção:</strong> Nos túbulos renais, substâncias úteis ao corpo (glicose, aminoácidos e a maior parte da água) retornam aos capilares sanguíneos envolventes.<br>
+                    3. <strong>Secreção:</strong> Resíduos nocivos remanescentes no sangue são lançados ativamente nos túbulos, consolidando a urina final em direção ao ducto coletor.
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">🚹 2. Sistema Genital Masculino</h2>
+        <div class="card">
+            <span class="page-badge blue-badge">Págs. 282 e 283</span>
+            <p>Responsável direto pela maturação e condução dos gametas masculinos (<strong>espermatozoides</strong>) e pela síntese do hormônio andrógeno <strong>testosterona</strong>.</p>
+            
+            <ul>
+                <li><strong>Testículos (2):</strong> Glândulas sexuais produtoras de gametas e testosterona. Ficam no <strong>saco escrotal</strong>, bolsa que mantém a temperatura térmica ideal para a espermatogênese (de 1°C a 2°C abaixo da corporal).</li>
+                <li><strong>Epidídimos (2):</strong> Canais de repouso onde os espermatozoides ficam armazenados até ganharem mobilidade flagelar e amadurecerem.</li>
+                <li><strong>Dutos Deferentes (2):</strong> Tubos musculares que direcionam os espermatozoides do epidídimo até o canal da uretra.</li>
+                <li><strong>Uretra:</strong> Canal compartilhado que atua tanto na ejeção de sêmen quanto na excreção urinária (nunca simultaneamente).</li>
+                <li><strong>Glândulas Anexas:</strong> Compostas pelas <em>vesículas seminais</em>, <em>próstata</em> e <em>glândulas bulbouretrais</em>. Produzem secreções alcalinas e nutritivas que limpam a uretra, protegem contra a acidez vaginal e nutrem os espermatozoides, compondo o <strong>sêmen</strong>.</li>
+            </ul>
+        </div>
+
+        <h2 class="section-title">🚺 3. Sistema Genital Feminino</h2>
+        <div class="card">
+            <span class="page-badge pink-badge">Págs. 284 e 285</span>
+            <p>Destinado à produção dos gametas femininos (<strong>ovócitos</strong>), síntese de hormônios reguladores (estrogênio e progesterona) e à manutenção mecânica e nutricional do embrião durante toda a gravidez.</p>
+            
+            <div class="grid-2" style="margin-top: 0;">
+                <div class="sub-card" style="border-left-color: #d14973;">
+                    <strong>Estruturas Internas:</strong><br>
+                    • <strong>Ovários (2):</strong> Glândulas que abrigam e liberam os ovócitos secundários, além de secretar hormônios sexuais.<br>
+                    • <strong>Tubas Uterinas (2):</strong> Ductos que conectam os ovários ao útero. É o local biológico padrão onde ocorre a <strong>fecundação</strong>.<br>
+                    • <strong>Útero:</strong> Órgão muscular expansível revestido pelo <strong>endométrio</strong> (tecido vascularizado onde o embrião se fixa na gravidez, processo chamado <strong>nidação</strong>).<br>
+                    • <strong>Vagina:</strong> Canal muscular elástico que recebe o pênis e funciona como canal de parto e escoamento menstrual.
+                </div>
+
+                <div class="sub-card" style="border-left-color: #d14973;">
+                    <strong>Estrutura Externa (Pudendo Feminino):</strong><br>
+                    Composto de forma integrada por dobras cutâneas de proteção mecânica (grandes e pequenos lábios) e pelo <strong>clitóris</strong>, pequeno órgão erétil dotado de altíssima sensibilidade e ricas terminações nervosas.
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">🩸 4. O Ciclo Menstrual Humano</h2>
+        <div class="card">
+            <span class="page-badge purple-badge">Pág. 286</span>
+            <p>Apresenta uma duração média de 28 dias e é sincronizado pela flutuação coordenada de hormônios hipofisários (<strong>FSH</strong> e <strong>LH</strong>) e ovarianos (<strong>estrogênio</strong> e <strong>progesterona</strong>):</p>
+            
+            <div class="sub-card" style="border-left-color: #e76f51;">
+                <strong>1. Menstruação (Dia 1):</strong> Marca o ponto inicial do ciclo biológico. A queda abrupta nas taxas de progesterona e estrogênio causa a descamação e desprendimento do endométrio, eliminado em forma de sangramento.
+            </div>
+            
+            <div class="sub-card" style="border-left-color: #f4a261;">
+                <strong>2. Fase Folicular:</strong> O hormônio hipofisário FSH atua estimulando o amadurecimento de um folículo ovariano. Este folículo passa a liberar estrogênio, que inicia a reconstrução física da parede do endométrio uterino.
+            </div>
+            
+            <div class="sub-card" style="border-left-color: #2a9d8f;">
+                <strong>3. Ovulação (Média do 14º dia):</strong> Um pico agudo na liberação do hormônio LH induz o rompimento definitivo do folículo maduro, liberando o ovócito na tuba uterina (início do período fértil).
+            </div>
+            
+            <div class="sub-card" style="border-left-color: #264653;">
+                <strong>4. Fase Lútea:</strong> O folículo rompido converte-se no <strong>corpo lúteo</strong>, que secreta altas doses de progesterona para estabilizar o útero. Se não houver fecundação, o corpo lúteo degenera, os níveis hormonais caem acentuadamente e o ciclo recomeça com uma nova menstruação.
+            </div>
+        </div>
+
+        <div class="navigation-buttons">
+            <a href="tema17.html" class="btn btn-prev">← Voltar para o Tema 17</a>
+            <a href="tema26.html" class="btn">Avançar para o Tema 26 ➜</a>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Projeto de Biologia! 🗿</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 14: Bactérias, Arqueias, Protozoários, Algas e Fungos 🦠🍄</title>
+    <style>
+        :root {
+            --primary-color: #4a7c59; /* Verde folha fofo */
+            --secondary-color: #68b0ab; /* Verde água suave */
+            --accent-color: #9c8cb9; /* Roxo pastel para biologia/microbiologia */
+            --bg-color: #fafdfb; 
+            --card-bg: #ffffff;
+            --text-color: #334e3a; 
+            --button-color: #76c893;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', 'Segoe UI', Quicksand, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding-top: 100px; /* Espaço para o menu fixo cute */
+        }
+
+        /* BARRA DO TOPO ESTILO DE APLICATIVO FOFINHO */
+        .top-app-bar {
+            background-color: #ffffff;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(74, 124, 89, 0.08);
+            border-bottom: 3px dashed #e2efe7;
+            padding: 10px 0 5px 0;
+        }
+
+        /* Três Pontinhos Decorativos */
+        .decor-dots {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+
+        .decor-dots span {
+            width: 8px;
+            height: 8px;
+            background-color: var(--button-color);
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+        .decor-dots span:nth-child(2) { background-color: var(--accent-color); }
+        .decor-dots span:nth-child(3) { background-color: var(--secondary-color); }
+
+        /* MENU EM LINHA RETA COM ARRASTE EM TOUCH (SCROLL HORIZONTAL) */
+        nav {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 5px 20px 10px 20px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none; /* Firefox */
+        }
+
+        nav::-webkit-scrollbar {
+            display: none; /* Chrome, Safari e Edge */
+        }
+
+        nav a {
+            display: inline-block;
+            color: #7fa98a;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+            padding: 8px 18px;
+            background-color: #f1f8f4;
+            border-radius: 20px;
+            border: 2px solid transparent;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        nav a:hover {
+            background-color: #e2efe7;
+            color: var(--primary-color);
+            transform: scale(1.05);
+        }
+
+        nav a.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+            box-shadow: 0 4px 10px rgba(74, 124, 89, 0.2);
+        }
+
+        /* CABEÇALHO HERO */
+        header {
+            background: linear-gradient(135deg, #eaf5ee, #f0f8f4);
+            color: var(--primary-color);
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 30px;
+            max-width: 1060px;
+            margin: 20px auto 10px auto;
+            border: 3px dashed #cde4d5;
+        }
+
+        header h1 {
+            font-size: 2.1rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: #618c6f;
+            font-weight: 500;
+        }
+
+        /* CONTAINER PRINCIPAL */
+        .container {
+            max-width: 1060px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        /* TÍTULOS DE SEÇÃO */
+        .section-title {
+            color: var(--primary-color);
+            margin: 35px 0 15px 5px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* CARTÕES CUTE */
+        .card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 28px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 24px rgba(165, 198, 175, 0.12);
+            border: 1px solid #edf5f0;
+            position: relative;
+        }
+
+        .page-badge {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 4px 14px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 8px rgba(156, 140, 185, 0.2);
+        }
+
+        ul {
+            list-style-position: inside;
+            margin-left: 5px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            padding-left: 5px;
+        }
+
+        strong {
+            color: var(--primary-color);
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .sub-card {
+            background: #f7faf8;
+            border-left: 5px solid var(--secondary-color);
+            padding: 16px;
+            margin-top: 12px;
+            border-radius: 12px;
+        }
+
+        /* ATIVIDADES */
+        .activities-section {
+            background-color: #fffbf0;
+            border: 3px dashed #ffeaa7;
+            border-radius: 24px;
+            padding: 28px;
+            margin-top: 45px;
+        }
+
+        .activities-section h2 {
+            color: #b38600;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .activity-item {
+            background: white;
+            padding: 20px;
+            border-radius: 18px;
+            margin-bottom: 15px;
+            border: 1px solid #fff2cc;
+            box-shadow: 0 4px 10px rgba(230, 210, 150, 0.15);
+        }
+
+        .answer {
+            background-color: #edf7ed;
+            padding: 12px 16px;
+            border-radius: 12px;
+            margin-top: 12px;
+            border-left: 5px solid #66bb6a;
+            color: #2e7d32;
+        }
+
+        /* BOTÕES DE NAVEGAÇÃO INTER-PÁGINAS */
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            gap: 15px;
+        }
+
+        .btn {
+            background-color: var(--button-color);
+            color: white;
+            text-decoration: none;
+            padding: 14px 30px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1rem;
+            box-shadow: 0 6px 15px rgba(118, 200, 147, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #52b788;
+            transform: translateY(-3px);
+        }
+
+        .btn-prev {
+            background-color: #95a5a6;
+            box-shadow: 0 6px 15px rgba(149, 165, 166, 0.3);
+        }
+        .btn-prev:hover { background-color: #7f8c8d; }
+
+        footer {
+            background-color: #eaf5ee;
+            color: var(--primary-color);
+            text-align: center;
+            padding: 25px 20px;
+            margin-top: 60px;
+            font-weight: bold;
+            border-top: 3px dashed #cde4d5;
+            border-radius: 30px 30px 0 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-app-bar">
+        <div class="decor-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav>
+            <a href="index.html">Tema 7 🌿</a>
+            <a href="tema13.html">Tema 13 🐠</a>
+            <a href="tema14.html" class="active">Tema 14 🐸</a>
+            <a href="tema15.html">Tema 15 🦅</a>
+            <a href="tema16.html">Tema 16 🐆</a>
+            <a href="tema17.html">Tema 17 ⚜️</a>
+            <a href="tema25.html">Tema 25 🌸</a>
+            <a href="tema26.html">Tema 26 🍂</a>
+            <a href="tema27.html">Tema 27 🍄</a>
+        </nav>
+    </div>
+
+    <header>
+        <h1>Tema 14: Diversidade dos Seres Vivos ✨</h1>
+        <p>Bactérias, Arqueias, Protozoários, Algas e Fungos</p>
+    </header>
+
+    <div class="container">
+
+        <h2 class="section-title">🧬 Grupos de Microrganismos e Organismos Simples</h2>
+        <div class="card">
+            <div class="grid-3">
+                <div class="sub-card" style="border-left-color: #76c893;">
+                    <strong>Bactérias:</strong> Seres procariontes e unicelulares. Podem ser autótrofas ou heterótrofas. Reproduzem-se principalmente por fissão binária. São fundamentais para a decomposição e ciclos biogeoquímicos (como o do nitrogênio), embora algumas causem doenças.
+                </div>
+                <div class="sub-card" style="border-left-color: #f4a261;">
+                    <strong>Arqueias:</strong> Também procariontes e unicelulares, mas com parede celular e material genético bem diferentes das bactérias. São famosas por viverem em condições ambientais extremas, sendo chamadas de extremófilas.
+                </div>
+                <div class="sub-card" style="border-left-color: #9c8cb9;">
+                    <strong>Protozoários:</strong> Eucariontes, unicelulares e heterótrofos. A maioria vive em ambientes aquáticos ou úmidos. Locomovem-se por cílios, flagelos ou pseudópodes. Alguns atuam como parasitas humanos.
+                </div>
+            </div>
+            <div class="grid-3" style="margin-top: 0;">
+                <div class="sub-card" style="border-left-color: #52b788;">
+                    <strong>Algas:</strong> Eucariontes, uni ou pluricelulares, e obrigatoriamente autótrofas fotossintetizantes. Produzem a maior parte do oxigênio atmosférico e sustentam as teias alimentares aquáticas.
+                </div>
+                <div class="sub-card" style="border-left-color: #b8a47a;">
+                    <strong>Fungos:</strong> Eucariontes, uni (leveduras) ou pluricelulares (cogumelos/bolores), heterótrofos por absorção. São os grandes recicladores de matéria orgânica do planeta ao lado das bactérias.
+                </div>
+            </div>
+        </div>
+
+        <div class="activities-section">
+            <h2>📝 Resolução das Atividades (Pág. 164)</h2>
+            
+            <div class="activity-item">
+                <p><strong>1. Em um laboratório, dois frascos com a mesma bactéria patogênica humana foram cultivados em temperaturas diferentes: um a 37 °C e o outro a 25 °C. Responda:</strong></p>
+                <div class="answer">
+                    <strong>a) Em qual dos frascos houve maior crescimento bacteriano? Por quê?</strong><br>
+                    Resposta: No frasco cultivado a 37 °C. Por ser uma bactéria causadora de doenças em seres humanos, sua temperatura ótima de crescimento e reprodução é próxima à temperatura corpórea humana normal (cerca de 36,5 °C a 37 °C).<br><br>
+                    
+                    <strong>b) Cite os principais fatores que promovem a limitação das fases de uma curva de crescimento desses cultivos, e comente sobre o início da divergência entre elas.</strong><br>
+                    Resposta: Os fatores limitantes são a escassez de nutrientes, o esgotamento do espaço físico disponível e o acúmulo de resíduos tóxicos decorrentes do próprio metabolismo celular. A divergência se inicia quando o frasco a 37 °C acelera sua divisão celular muito mais rapidamente que o de 25 °C, impulsionado pela temperatura favorável.<br><br>
+                    
+                    <strong>c) Relacione as suas respostas anteriores à importância de conservar alimentos não processados, como carnes, acondicionados na geladeira.</strong><br>
+                    Resposta: A temperatura reduzida do refrigerador (geralmente abaixo de 5 °C) desacelera drasticamente as taxas metabólicas e a velocidade de divisão celular das bactérias, retardando a decomposição e impedindo o crescimento de agentes patogênicos.<br><br>
+                    
+                    <strong>d) Pesquise e descreva os fundamentos das seguintes técnicas ambientais de conservação de alimentos:</strong><br>
+                    • <strong>Pasteurização:</strong> Aquecimento brando controlado seguido de um resfriamento brusco para eliminar microrganismos patogênicos sem alterar propriedades físicas e nutritivas.<br>
+                    • <strong>Esterilização:</strong> Emprego de calor intenso (muitas vezes sob alta pressão) para destruir de maneira absoluta todas as formas de vida microbiana.<br>
+                    • <strong>UHT (Ultra High Temperature):</strong> Exposição a temperaturas ultra-altas por pouquíssimos segundos para eliminar microrganismos preservando o frescor comercial (ex: leites de caixinha).<br>
+                    • <strong>Desidratação:</strong> Remoção da umidade livre por meio de evaporação térmica, impossibilitando a atividade metabólica microbiana pela falta d'água.<br>
+                    • <strong>Liofilização:</strong> Processo de desidratação a frio no qual o produto é completamente congelado e a água interna é extraída diretamente por sublimação sob vácuo.
+                </div>
+            </div>
+
+            <div class="activity-item">
+                <p><strong>2. Analise a reportagem: <em>"Chuva envia microrganismo para o espaço para estudar possibilidade de vida em Marte"</em> (sobre uma arqueobactéria enviada à estação chinesa para testes sob radiação e temperaturas extremas).</strong></p>
+                <div class="answer">
+                    <strong>a) O termo "arqueobactéria" não é mais utilizado. Qual a nomenclatura correta atualmente? Explique considerando a classificação.</strong><br>
+                    Resposta: O termo atual e correto é Arqueias (ou integrantes do Domínio Archaea). Elas deixaram de ser classificadas junto às bactérias verdadeiras porque análises genéticas e moleculares profundas demonstraram que elas pertencem a uma linhagem evolutiva completamente diferente, possuindo inclusive maior proximidade molecular com os organismos eucariontes em diversos aspectos celulares.<br><br>
+                    
+                    <strong>b) É provável que este microrganismo pertença a um grupo extremófilo? Justifique.</strong><br>
+                    Resposta: Sim, com certeza. O texto salienta que o organismo habita ambientes severos e desprovidos de oxigênio (fundos marinhos, pântanos) e que foi levado ao espaço sideral justamente para testar sua tolerância a "radiações cósmicas, microgravidade e temperaturas extremas", propriedades biológicas exclusivas de organismos extremófilos.
+                </div>
+            </div>
+
+            <div class="activity-item">
+                <p><strong>3. Explique a proximidade evolutiva entre fungos e animais pela presença de quitina e cite aplicações industriais dessa substância.</strong></p>
+                <div class="answer">
+                    <strong>Resposta:</strong> A quitina é um polissacarídeo estrutural resistente, insolúvel e biodegradável presente na parede celular dos fungos e no exoesqueleto de artrópodes (animais). Suas principais aplicações industriais abrangem:<br>
+                    • Produção de fios de sutura cirúrgica absorvíveis.<br>
+                    • Formulação de cosméticos hidratantes e protetores.<br>
+                    • Criação de membranas/peles artificiais no tratamento médico de queimaduras graves.<br>
+                    • Coagulação e filtragem no tratamento de águas residuais industriais.<br>
+                    • Desenvolvimento de defensivos biológicos e ecológicos na agricultura.
+                </div>
+            </div>
+
+            <div class="activity-item">
+                <p><strong>4. A imagem microscópica aponta a presença do protozoário <em>Trypanosoma cruzi</em> (causador da doença de Chagas) em uma amostra de sangue.</strong></p>
+                <div class="answer">
+                    <strong>a) Qual estrutura é comumente indicada em destaque nesse protozoário e qual sua função?</strong><br>
+                    Resposta: A estrutura em destaque é o flagelo. Sua função primordial consiste em garantir a propulsão mecânica e locomoção do protozoário em meios fluidos, como o plasma sanguíneo do hospedeiro.<br><br>
+                    
+                    <strong>b) Identifique as formas de transmissão e os principais sintomas da doença de Chagas.</strong><br>
+                    Resposta:<br>
+                    • <strong>Transmissão:</strong> Contato das fezes contaminadas do inseto vetor ("barbeiro") com a pele lesionada pela picada ou mucosas; ingestão direta de alimentos crus contaminados triturados com o inseto (como açaí ou caldo de cana); transfusões de sangue; ou de forma congênita (da mãe gestante para o feto).<br>
+                    • <strong>Sintomas:</strong> Na fase aguda ocorrem febres persistentes, dores de cabeça e inchaço linfático local. Na fase crônica, após anos, manifestam-se danos severos no tecido cardíaco (cardiomegalia/coração crescido) e disfunções no trato digestório (megaesôfago e megacólon).
+                </div>
+            </div>
+
+            <div class="activity-item">
+                <p><strong>5. Corrija a frase: <em>"As algas são seres procariontes, pluricelulares, autotróficas e algumas realizam fotossíntese."</em></strong></p>
+                <div class="answer">
+                    <strong>Resposta Correta:</strong><br>
+                    "As algas são seres eucariontes, unicelulares ou pluricelulares, obrigatoriamente autotróficas e todas realizam fotossíntese.”
+                </div>
+            </div>
+        </div>
+
+        <div class="navigation-buttons">
+            <a href="tema13.html" class="btn btn-prev">← Voltar para o Tema 13</a>
+            <a href="tema15.html" class="btn">Avançar para o Tema 15 ➜</a>
+        </div>
+
+    </div>
+
+    <footer>
+        <p> Projeto de Biologia! 🌱🐸</p>
+    </footer>
+
+</body>
+</html>

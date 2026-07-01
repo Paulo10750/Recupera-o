@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 7: Regulação Hormonal 🧠🌿</title>
+    <style>
+        :root {
+            --primary-color: #4a7c59; /* Verde folha fofo */
+            --secondary-color: #68b0ab; /* Verde água suave */
+            --accent-color: #9c8cb9; /* Roxo pastel para o cérebro/hormônios */
+            --bg-color: #fafdfb; /* Off-white com toque verde bem leve */
+            --card-bg: #ffffff;
+            --text-color: #334e3a; /* Cinza esverdeado escuro para leitura confortável */
+            --alert-bg: #f0f7f4;
+            --button-color: #76c893;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', 'Segoe UI', Quicksand, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding-top: 100px; /* Espaço para o menu fixo cute */
+        }
+
+        /* BARRA DO TOPO ESTILO DE APLICATIVO FOFINHO */
+        .top-app-bar {
+            background-color: #ffffff;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(74, 124, 89, 0.08);
+            border-bottom: 3px dashed #e2efe7;
+            padding: 10px 0 5px 0;
+        }
+
+        /* Três Pontinhos Decorativos */
+        .decor-dots {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+
+        .decor-dots span {
+            width: 8px;
+            height: 8px;
+            background-color: var(--button-color);
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+        .decor-dots span:nth-child(2) { background-color: var(--accent-color); }
+        .decor-dots span:nth-child(3) { background-color: var(--secondary-color); }
+
+        /* MENU EM LINHA RETA COM ARRASTE EM TOUCH (SCROLL HORIZONTAL) */
+        nav {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 5px 20px 10px 20px;
+            /* Remove as barras de rolagem visíveis para ficar limpo */
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none; /* Firefox */
+        }
+
+        nav::-webkit-scrollbar {
+            display: none; /* Chrome, Safari e Edge */
+        }
+
+        nav a {
+            display: inline-block;
+            color: #7fa98a;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+            padding: 8px 18px;
+            background-color: #f1f8f4;
+            border-radius: 20px;
+            border: 2px solid transparent;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        nav a:hover {
+            background-color: #e2efe7;
+            color: var(--primary-color);
+            transform: scale(1.05);
+        }
+
+        nav a.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+            box-shadow: 0 4px 10px rgba(74, 124, 89, 0.2);
+        }
+
+        /* CABEÇALHO HERO */
+        header {
+            background: linear-gradient(135deg, #eaf5ee, #f0f8f4);
+            color: var(--primary-color);
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 30px;
+            max-width: 1060px;
+            margin: 20px auto 10px auto;
+            border: 3px dashed #cde4d5;
+        }
+
+        header h1 {
+            font-size: 2.3rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: #618c6f;
+            font-weight: 500;
+        }
+
+        /* CONTAINER PRINCIPAL */
+        .container {
+            max-width: 1060px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        /* TÍTULOS DE SEÇÃO */
+        .section-title {
+            color: var(--primary-color);
+            margin: 35px 0 15px 5px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* CARTÕES CUTE */
+        .card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 28px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 24px rgba(165, 198, 175, 0.12);
+            border: 1px solid #edf5f0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-badge {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 4px 14px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 8px rgba(156, 140, 185, 0.2);
+        }
+
+        ul {
+            list-style-position: inside;
+            margin-left: 5px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            padding-left: 5px;
+        }
+
+        strong {
+            color: var(--primary-color);
+        }
+
+        /* GRIDS E SUB-CARDS */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .sub-card {
+            background: #f7faf8;
+            border-left: 5px solid var(--secondary-color);
+            padding: 16px;
+            margin-top: 12px;
+            border-radius: 12px;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.01);
+        }
+
+        .alert-box {
+            background-color: #fdf5f5;
+            border-left: 5px solid #e77f7f;
+            padding: 18px;
+            border-radius: 12px;
+            margin-top: 15px;
+            color: #8c4a4a;
+        }
+
+        /* ATIVIDADES */
+        .activities-section {
+            background-color: #fffbf0;
+            border: 3px dashed #ffeaa7;
+            border-radius: 24px;
+            padding: 28px;
+            margin-top: 45px;
+        }
+
+        .activities-section h2 {
+            color: #b38600;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .activity-item {
+            background: white;
+            padding: 20px;
+            border-radius: 18px;
+            margin-bottom: 15px;
+            border: 1px solid #fff2cc;
+            box-shadow: 0 4px 10px rgba(230, 210, 150, 0.15);
+        }
+
+        .answer {
+            background-color: #edf7ed;
+            padding: 12px 16px;
+            border-radius: 12px;
+            margin-top: 12px;
+            border-left: 5px solid #66bb6a;
+            color: #2e7d32;
+        }
+
+        /* BOTÃO DE AVANÇAR */
+        .navigation-buttons {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 40px;
+        }
+
+        .btn {
+            background-color: var(--button-color);
+            color: white;
+            text-decoration: none;
+            padding: 14px 38px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1.05rem;
+            box-shadow: 0 6px 15px rgba(118, 200, 147, 0.3);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .btn:hover {
+            background-color: #52b788;
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(118, 200, 147, 0.4);
+        }
+
+        footer {
+            background-color: #eaf5ee;
+            color: var(--primary-color);
+            text-align: center;
+            padding: 25px 20px;
+            margin-top: 60px;
+            font-weight: bold;
+            border-top: 3px dashed #cde4d5;
+            border-radius: 30px 30px 0 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-app-bar">
+        <div class="decor-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav>
+            <a href="index.html" class="active">Tema 7 🌿</a>
+            <a href="tema13.html">Tema 13 🐠</a>
+            <a href="tema14.html">Tema 14 🐸</a>
+            <a href="tema15.html">Tema 15 🦅</a>
+            <a href="tema16.html">Tema 16 🐆</a
+            <a href="tema17.html">Tema 17 ⚜️</a>
+            <a href="tema25.html">Tema 25 🌸</a>
+            <a href="tema26.html">Tema 26 🍂</a>
+            <a href="tema27.html">Tema 27 🍄</a>
+        </nav>
+    </div>
+
+    <header>
+        <h1>Tema 7: Regulação Hormonal ✨</h1>
+        <p>Sistemas Endócrinos e Funções das Glândulas (Páginas 88 a 94)</p>
+    </header>
+
+    <div class="container">
+
+        <h2 class="section-title">🩸 1. O Sistema Endócrino e os Hormônios</h2>
+        <div class="card">
+            <span class="page-badge">Págs. 88 e 89</span>
+            <p>O sistema endócrino é composto por glândulas que controlam e coordenam diversas funções do corpo por meio de mensageiros químicos chamados hormônios. Eles são lançados diretamente na corrente sanguínea para atuar em células-alvo específicas.</p>
+            
+            <p style="margin-top: 15px; font-weight: bold; color: var(--primary-color);">Tipos de Glândulas:</p>
+            <div class="grid-3">
+                <div class="sub-card" style="border-left-color: #e77f7f; background-color: #fffcfc;">
+                    <strong>Glândulas Endócrinas:</strong> Secretam hormônios diretamente no sangue (ex: hipófise, tireoide, suprarrenais).
+                </div>
+                <div class="sub-card" style="border-left-color: #7fbee7; background-color: #fcfeff;">
+                    <strong>Glândulas Exócrinas:</strong> Liberam suas secreções para fora do corpo ou em cavidades internas através de dutos (ex: glândulas salivares, sudoríparas, mamárias).
+                </div>
+                <div class="sub-card" style="border-left-color: #7fe79b; background-color: #fcfdfc;">
+                    <strong>Glândulas Mistas (Anfícrinas):</strong> Possuem funções endócrinas e exócrinas ao mesmo tempo (ex: o pâncreas).
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">🧠 2. O Comando Central: Hipotálamo e Hipófise</h2>
+        <div class="card">
+            <span class="page-badge">Págs. 89 e 90</span>
+            <p><strong>Hipotálamo:</strong> Localizado na base do cérebro, atua como uma "ponte" entre o sistema nervoso e o endócrino. Ele produz hormônios que controlam a liberação ou inibição de substâncias na hipófise.</p>
+            
+            <div class="sub-card" style="border-left-color: var(--accent-color); background-color: #faf9fc;">
+                <strong>Hipófise (Glândula Mestre):</strong> Dividida em duas partes principais:
+                <ul style="margin-top: 10px; margin-left: 20px;">
+                    <li><strong>Adenoipófise (Anterior):</strong> Produz e libera hormônios fundamentais como o GH (Hormônio do Crescimento), TSH (estimula a tireoide), ACTH (estimula as suprarrenais), FSH e LH (atuam nas gônadas) e a Prolactina (estimula a produção de leite).</li>
+                    <li><strong>Neuroipófise (Posterior):</strong> Não produz hormônios, apenas armazena e libera os hormônios fabricados pelo hipotálamo: a Ocitocina (contração uterina no parto e ejeção de leite) e o ADH (Hormônio Antidiurético, que controla a reabsorção de água nos rins).</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 class="section-title">🦋 3. Tireoide e Paratireoides</h2>
+        <div class="card">
+            <span class="page-badge">Págs. 90 e 91</span>
+            <p><strong>Tireoide:</strong> Localizada no pescoço, produz os hormônios T_3 (tri-iodotironina) e T_4 (tiroxina), que controlam o metabolismo do corpo. Também produz a calcitonina, que reduz os níveis de cálcio no sangue, guardando-o nos ossos.</p>
+            
+            <div class="alert-box">
+                <strong>💡 Nota sobre Distúrbios:</strong> Sua falta causa o <strong>Hipotireoidismo</strong> (metabolismo lento, cansaço) e seu excesso gera o <strong>Hipertireoidismo</strong> (metabolismo acelerado, perda de peso).
+            </div>
+
+            <div class="sub-card" style="margin-top: 20px;">
+                <strong>Paratireoides:</strong> Quatro pequenas glândulas atrás da tireoide que secretam o PTH (Paratormônio). Ele faz o oposto da calcitonina: retira o cálcio dos ossos e o joga no sangue quando os níveis estão baixos.
+            </div>
+        </div>
+
+        <h2 class="section-title">🔋 4. Suprarrenais (Adrenais)</h2>
+        <div class="card">
+            <span class="page-badge">Pág. 92</span>
+            <p>Situadas acima dos rins, dividem-se em duas partes:</p>
+            <ul>
+                <li><strong>Córtex (Externo):</strong> Produz o cortisol, hormônio ligado ao estresse e à regulação do metabolismo de açúcares.</li>
+                <li><strong>Medula (Interna):</strong> Produz a adrenalina (epinefrina) e a noradrenalina, preparando o corpo para situações de emergência ou estresse agudo ("luta ou fuga"). Elas aumentam os batimentos cardíacos, aceleram a respiração e liberam mais glicose no sangue.</li>
+            </ul>
+        </div>
+
+        <h2 class="section-title">🍩 5. Pâncreas e o Controle da Glicose</h2>
+        <div class="card">
+            <span class="page-badge">Págs. 92 e 93</span>
+            <p>Atua como glândula mista. Na sua porção endócrina, possui aglomerados de células (Ilhotas de Langerhans) que regulam o açúcar no sangue através de dois hormônios opostos:</p>
+            
+            <div class="sub-card" style="border-left-color: #76c893; background-color: #f7fcf9;">
+                <strong>Insulina:</strong> Produzida pelas células beta, reduz a glicose no sangue ao facilitar a sua entrada nas células para gerar energia ou ser armazenada no fígado como glicogênio.
+            </div>
+            
+            <div class="sub-card" style="border-left-color: #f4a261; background-color: #fffdfa;">
+                <strong>Glucagon:</strong> Produzido pelas células alfa, é liberado quando estamos em jejum. Ele estimula o fígado a quebrar o glicogênio guardado e liberar glicose na corrente sanguínea.
+            </div>
+        </div>
+
+        <h2 class="section-title">🚹 6. Gônadas (Ovários e Testículos)</h2>
+        <div class="card">
+            <span class="page-badge">Pág. 94</span>
+            <p>Responsáveis pela reprodução e pelas características sexuais secundárias:</p>
+            <p style="margin-top: 10px;">• <strong>Ovários (Mulheres):</strong> Produzem estrogênio (desenvolvimento do corpo feminino) e progesterona (preparação do útero para a gravidez).<br>
+            • <strong>Testículos (Homens):</strong> Produzem a testosterona, responsável pelo aparecimento dos pelos, engrossamento da voz, aumento da massa muscular e produção de espermatozoides.</p>
+        </div>
+        <a href="tema13.html" class="btn">Avançar para o Tema 13 ➜</a>
+         <footer>
+        <p> Projeto de Biologia! 🌱🐸</p>
+    </footer>
+
+        
+</body>
+</html>

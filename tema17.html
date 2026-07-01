@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 17: Reino Plantae e Anatomia Vegetal 🌿🌸</title>
+    <style>
+        :root {
+            --primary-color: #2d5a27; /* Verde floresta fofo */
+            --secondary-color: #7fa98a; /* Verde folha suave */
+            --accent-color: #f4a261; /* Laranja pastel para frutos/flores */
+            --bg-color: #f5f9f6; 
+            --card-bg: #ffffff;
+            --text-color: #2c3e50; 
+            --button-color: #52b788;
+            --purple-badge: #9c8cb9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', 'Segoe UI', Quicksand, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding-top: 100px; /* Espaço para o menu fixo cute */
+        }
+
+        /* BARRA DO TOPO ESTILO DE APLICATIVO FOFINHO */
+        .top-app-bar {
+            background-color: #ffffff;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(45, 90, 39, 0.08);
+            border-bottom: 3px dashed #e2efe6;
+            padding: 10px 0 5px 0;
+        }
+
+        /* Três Pontinhos Decorativos */
+        .decor-dots {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+
+        .decor-dots span {
+            width: 8px;
+            height: 8px;
+            background-color: var(--button-color);
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+        .decor-dots span:nth-child(2) { background-color: var(--accent-color); }
+        .decor-dots span:nth-child(3) { background-color: var(--purple-badge); }
+
+        /* MENU EM LINHA RETA COM ARRASTE EM TOUCH (SCROLL HORIZONTAL) */
+        nav {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 5px 20px 10px 20px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none; /* Firefox */
+        }
+
+        nav::-webkit-scrollbar {
+            display: none; /* Chrome, Safari e Edge */
+        }
+
+        nav a {
+            display: inline-block;
+            color: #7fa98a;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+            padding: 8px 18px;
+            background-color: #f1f8f4;
+            border-radius: 20px;
+            border: 2px solid transparent;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        nav a:hover {
+            background-color: #e2efe7;
+            color: var(--primary-color);
+            transform: scale(1.05);
+        }
+
+        nav a.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+            box-shadow: 0 4px 10px rgba(45, 90, 39, 0.2);
+        }
+
+        /* CABEÇALHO HERO */
+        header {
+            background: linear-gradient(135deg, #e8f5e9, #fff9c4);
+            color: var(--primary-color);
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 30px;
+            max-width: 1060px;
+            margin: 20px auto 10px auto;
+            border: 3px dashed #c8e6c9;
+        }
+
+        header h1 {
+            font-size: 2.1rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: #4caf50;
+            font-weight: 500;
+        }
+
+        /* CONTAINER PRINCIPAL */
+        .container {
+            max-width: 1060px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        /* TÍTULOS DE SEÇÃO */
+        .section-title {
+            color: var(--primary-color);
+            margin: 35px 0 15px 5px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* CARTÕES CUTE */
+        .card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 28px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 24px rgba(165, 198, 175, 0.15);
+            border: 1px solid #edf5f0;
+            position: relative;
+        }
+
+        .page-badge {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 4px 14px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .orange-badge {
+            background-color: var(--accent-color);
+        }
+
+        .purple-badge {
+            background-color: var(--purple-badge);
+        }
+
+        ul {
+            list-style-position: inside;
+            margin-left: 5px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            padding-left: 5px;
+        }
+
+        strong {
+            color: var(--primary-color);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        @media (max-width: 500px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .sub-card {
+            background: #f7faf8;
+            border-left: 5px solid var(--secondary-color);
+            padding: 16px;
+            margin-top: 12px;
+            border-radius: 12px;
+        }
+
+        .alert-box {
+            background-color: #fffbf2;
+            border-left: 5px solid var(--accent-color);
+            padding: 18px;
+            border-radius: 16px;
+            margin-top: 15px;
+            color: #7f5539;
+        }
+
+        /* SEÇÃO DE ATIVIDADES */
+        .activities-section {
+            background-color: #fffbf0;
+            border: 3px dashed #ffeaa7;
+            border-radius: 24px;
+            padding: 28px;
+            margin-top: 45px;
+        }
+
+        .activities-section h2 {
+            color: #b38600;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .activity-item {
+            background: white;
+            padding: 20px;
+            border-radius: 18px;
+            margin-bottom: 15px;
+            border: 1px solid #fff2cc;
+            box-shadow: 0 4px 10px rgba(230, 210, 150, 0.15);
+        }
+
+        .answer {
+            background-color: #edf7ed;
+            padding: 12px 16px;
+            border-radius: 12px;
+            margin-top: 12px;
+            border-left: 5px solid #66bb6a;
+            color: #2e7d32;
+        }
+
+        /* BOTÕES DE NAVEGAÇÃO INTER-PÁGINAS */
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            gap: 15px;
+        }
+
+        .btn {
+            background-color: var(--button-color);
+            color: white;
+            text-decoration: none;
+            padding: 14px 30px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1rem;
+            box-shadow: 0 6px 15px rgba(82, 183, 136, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .btn-prev {
+            background-color: #95a5a6;
+            box-shadow: 0 6px 15px rgba(149, 165, 166, 0.3);
+        }
+        .btn-prev:hover { background-color: #7f8c8d; }
+
+        footer {
+            background-color: #e8f5e9;
+            color: var(--primary-color);
+            text-align: center;
+            padding: 25px 20px;
+            margin-top: 60px;
+            font-weight: bold;
+            border-top: 3px dashed #c8e6c9;
+            border-radius: 30px 30px 0 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA FIXA SUPERIOR ESTILO CUTE APP -->
+    <div class="top-app-bar">
+        <div class="decor-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav>
+            <a href="index.html">Tema 7 🌿</a>
+            <a href="tema13.html">Tema 13 🐠</a>
+            <a href="tema14.html">Tema 14 🐸</a>
+            <a href="tema15.html">Tema 15 🧽</a>
+            <a href="tema16.html">Tema 16 🐆</a>
+            <a href="tema17.html" class="active">Tema 17 ⚜️</a>
+            <a href="tema25.html">Tema 25 🌸</a>
+            <a href="tema26.html">Tema 26 🍂</a>
+            <a href="tema27.html">Tema 27 🍄</a>
+        </nav>
+    </div>
+
+    <header>
+        <h1>Tema 17: O Reino das Plantas 🌱</h1>
+        <p>Evolução, Grupos Vegetais e Anatomia (Páginas 195 a 203)</p>
+    </header>
+
+    <div class="container">
+
+        <!-- Características Gerais das Plantas -->
+        <h2 class="section-title">🌿 Características Gerais das Plantas</h2>
+        <div class="card">
+            <span class="page-badge">Visão Geral</span>
+            <p>As plantas são organismos <strong>plurnicelulares</strong>, <strong>eucariontes</strong> e <strong>autótrofos fotossintetizantes</strong>[span_1](start_span)[span_1](end_span). Suas células possuem estruturas marcantes como a parede celular de celulose, cloroplastos e um grande vacúolo central[span_2](start_span)[span_2](end_span). Toda a energia excedente é armazenada na forma de <strong>amido</strong>[span_3](start_span)[span_3](end_span).</p>
+            
+            <div class="alert-box" style="background-color: #f1f8f5; border-left-color: var(--primary-color); color: var(--text-color); margin-top: 10px;">
+                <strong>🔄 Ciclo de Vida (Metagênese):</strong> Apresentam alternância de gerações, dividida em[span_4](start_span)[span_4](end_span):
+                <ul>
+                    <li><strong>Gametófito (n):</strong> Fase haploide encarregada de produzir os gametas[span_5](start_span)[span_5](end_span).</li>
+                    <li><strong>Esporófito (2n):</strong> Fase diploide encarregada de produzir os esporos[span_6](start_span)[span_6](end_span).</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Os 4 Grupos de Plantas -->
+        <h2 class="section-title">📈 A Evolução e os 4 Grupos de Plantas</h2>
+        <div class="card">
+            <span class="page-badge purple-badge">Linha do Tempo Evolutiva</span>
+            <p>As plantas evoluíram a partir de um ancestral comum (algas verdes aquáticas), desenvolvendo adaptações graduais para conquistar a terra firme[span_7](start_span)[span_7](end_span):</p>
+            <p style="text-align: center; font-weight: bold; margin: 15px 0; color: var(--primary-color);">
+                Ancestral Comum ➔ Briófitas ➔ Pteridófitas ➔ Gimnospermas ➔ Angiospermas[span_8](start_span)[span_8](end_span)
+            </p>
+
+            <div class="grid-2">
+                <div class="sub-card" style="border-left-color: var(--secondary-color);">
+                    <strong>1. Briófitas (Musgos e Hepáticas) – Pág. 195:</strong><br>
+                    Pequeno porte, vivem em locais úmidos e sombreados[span_9](start_span)[span_9](end_span). São <strong>avasculares</strong> (sem vasos condutores; transporte de célula em célula, limitando o tamanho)[span_10](start_span)[span_10](end_span). Não têm órgãos verdadeiros (rizoides, cauloides e filoides)[span_11](start_span)[span_11](end_span). Dependência total da água para a fecundação (o anterozoide nada até a osfera)[span_12](start_span)[span_12](end_span). A fase dominante é o <strong>Gametófito</strong>[span_13](start_span)[span_13](end_span).
+                </div>
+                <div class="sub-card" style="border-left-color: var(--primary-color);">
+                    <strong>2. Pteridófitas (Samambaias) – Pág. 196:</strong><br>
+                    Primeiras plantas <strong>vasculares (traqueófitas)</strong>, possuindo xilema e floema, o que permitiu maior crescimento[span_14](start_span)[span_14](end_span). Têm raízes, caules (tipo rizoma) e folhas verdadeiras[span_15](start_span)[span_15](end_span). Possuem <strong>soros</strong> (pontos escuros atrás das folhas) onde se formam os esporos[span_16](start_span)[span_16](end_span). Ainda dependem da água para fecundação[span_17](start_span)[span_17](end_span). A fase dominante é o <strong>Esporófito</strong>[span_18](start_span)[span_18](end_span).
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="sub-card" style="border-left-color: var(--accent-color);">
+                    <strong>3. Gimnospermas (Pinheiros e Araucárias) – Pág. 197:</strong><br>
+                    Conquista definitiva da terra firme[span_19](start_span)[span_19](end_span). Foram as primeiras a produzir o <strong>grão de pólen</strong> (levado pelo vento), eliminando a água na reprodução[span_20](start_span)[span_20](end_span). Produzem sementes (Espermatófitas), mas as sementes são "nuas" (não ficam dentro de frutos)[span_21](start_span)[span_21](end_span). Suas estruturas reprodutivas são os <strong>estróbilos</strong> (cones/pinhas)[span_22](start_span)[span_22](end_span).
+                </div>
+                <div class="sub-card" style="border-left-color: #e27f7f;">
+                    <strong>4. Angiospermas (Frutíferas e Flores) – Págs. 198-201:</strong><br>
+                    O grupo mais abundante e diverso do planeta[span_23](start_span)[span_23](end_span). Apresentam duas grandes novidades: <strong>Flores</strong> (atraem polinizadores animais, tornando a reprodução eficiente) e <strong>Frutos</strong> (protegem as sementes e ajudam na dispersão por animais)[span_24](start_span)[span_24](end_span).
+                </div>
+            </div>
+        </div>
+
+        <!-- Divisão das Angiospermas -->
+        <h2 class="section-title">📂 Divisão das Angiospermas</h2>
+        <div class="card">
+            <span class="page-badge orange-badge">Pág. 201</span>
+            <p>Classificadas de acordo com a quantidade de cotilédones (folhas embrionárias da semente)[span_25](start_span)[span_25](end_span):</p>
+            <div class="grid-2" style="margin-top: 0;">
+                <div class="sub-card" style="border-left-color: var(--accent-color);">
+                    <strong>Monocotiledôneas:</strong><br>
+                    Apenas 1 cotilédone na semente[span_26](start_span)[span_26](end_span). Raiz fasciculada (em cabeleira), folhas com nervuras paralelas e pétalas florais em múltiplos de 3[span_27](start_span)[span_27](end_span).<br>
+                    <em>Exemplos:</em> Grama, milho, arroz e orquídeas[span_28](start_span)[span_28](end_span).
+                </div>
+                <div class="sub-card" style="border-left-color: var(--accent-color);">
+                    <strong>Eudicotiledôneas:</strong><br>
+                    Possuem 2 cotilédones na semente[span_29](start_span)[span_29](end_span). Raiz pivotante (um eixo central principal), folhas com nervuras ramificadas e pétalas florais em múltiplos de 4 ou 5[span_30](start_span)[span_30](end_span).<br>
+                    <em>Exemplos:</em> Feijão, soja, ipê e laranjeira[span_31](start_span)[span_31](end_span).
+                </div>
+            </div>
+        </div>
+
+        <!-- Anatomia das Plantas -->
+        <h2 class="section-title">Anatomia das Plantas</h2>
+        <div class="card">
+            <span class="page-badge">Págs. 202 e 203</span>
+            <p>Órgãos especializados desenvolvidos para garantir a sobrevivência e a nutrição do vegetal[span_32](start_span)[span_32](end_span):</p>
+            <ul>
+                <li><strong>Raiz:</strong> Fixação ao substrato e absorção de água e sais minerais (seiva bruta)[span_33](start_span)[span_33](end_span).</li>
+                <li><strong>Caule:</strong> Sustentação das folhas e das estruturas reprodutivas, além da condução de seivas[span_34](start_span)[span_34](end_span).</li>
+                <li><strong>Xilema:</strong> Conduz a seiva bruta (água e sais) das raízes em direção às folhas[span_35](start_span)[span_35](end_span).</li>
+                <li><strong>Floema:</strong> Conduz a seiva elaborada (compostos orgânicos da fotossíntese) das folhas para todas as partes da planta[span_36](start_span)[span_36](end_span).</li>
+                <li><strong>Folha:</strong> Local principal da fotossíntese, respiração e transpiração[span_37](start_span)[span_37](end_span). Contém os <strong>estômatos</strong>, que regulam as trocas gasosas e a perda de água[span_38](start_span)[span_38](end_span).</li>
+            </ul>
+        </div>
+
+        <!-- Seção de Atividades Respondidas -->
+        <div class="activities-section">
+            <h2>📝 Resolução das Atividades (Págs. 204 e 205)</h2>
+            
+            <!-- Questão 1 -->
+            <div class="activity-item">
+                <p><strong>1. O esquema representa simplificadamente a hipótese evolutiva das plantas baseada em análises morfológicas e moleculares. Responda[span_39](start_span)[span_39](end_span):</strong></p>
+                <div style="margin-top: 10px; padding-left: 10px;">
+                    <p><em>a) Que grupo de organismos vivos atuais compartilha um ancestral comum mais recente com as plantas?[span_40](start_span)[span_40](end_span)</em></p>
+                    <div class="answer">As algas verdes (especificamente as carófitas)[span_41](start_span)[span_41](end_span).</div>
+                    
+                    <p style="margin-top: 10px;"><em>b) Quais características evolutivas estão representadas pelos números 1, 2, 3 e 4?[span_42](start_span)[span_42](end_span)</em></p>
+                    <div class="answer">
+                        <strong>1:</strong> Presença de embrião retido no gametófito (embriófitas) / Tecidos verdadeiros[span_43](start_span)[span_43](end_span).<br>
+                        <strong>2:</strong> Vasos condutores de seiva (xilema e floema) / Tecido vascular[span_44](start_span)[span_44](end_span).<br>
+                        <strong>3:</strong> Sementes e grãos de pólen[span_45](start_span)[span_45](end_span).<br>
+                        <strong>4:</strong> Flores e frutos[span_46](start_span)[span_46](end_span).
+                    </div>
+                </div>
+            </div>
+
+            <!-- Questão 2 -->
+            <div class="activity-item">
+                <p><strong>2. O ciclo de vida das plantas apresenta alternância de gerações. Explique como ocorre esse ciclo, citando as fases haploide e diploide[span_47](start_span)[span_47](end_span).</strong></p>
+                <div class="answer">
+                    O ciclo apresenta duas fases que se alternam: a fase de esporófito (2n - diploide) e a fase de gametófito (n - haploide)[span_48](start_span)[span_48](end_span). O esporófito adulto produz esporos por meiose[span_49](start_span)[span_49](end_span). Esses esporos germinam e dão origem ao gametófito, que produz os gametas masculinos e femininos por mitose[span_50](start_span)[span_50](end_span). Quando os gametas se unem na fecundação, formam um zigoto diploide, que se desenvolve para gerar um novo esporófito, reiniciando o ciclo[span_51](start_span)[span_51](end_span).
+                </div>
+            </div>
+
+            <!-- Questão 3 -->
+            <div class="activity-item">
+                <p><strong>3. Entre as características das briófitas está a ausência de vasos condutores de seiva. Relacione essa característica ao porte dessas plantas[span_52](start_span)[span_52](end_span).</strong></p>
+                <div class="answer">
+                    A ausência de vasos condutores obriga o transporte de água e nutrientes a ser feito de forma lenta, célula a célula (por difusão e osmose)[span_53](start_span)[span_53](end_span). Esse processo só é eficiente a curtas distâncias, o que limita o crescimento da planta e faz com que todas as briófitas tenham pequeno porte[span_54](start_span)[span_54](end_span).
+                </div>
+            </div>
+
+            <!-- Questão 4 -->
+            <div class="activity-item">
+                <p><strong>4. No dorso das folhas das samambaias maduras é comum observar pontos escuros. Que estruturas são essas e qual a função delas?[span_55](start_span)[span_55](end_span)</strong></p>
+                <div class="answer">
+                    Esses pontos escuros são os <strong>soros</strong>[span_56](start_span)[span_56](end_span). A função deles é abrigar os esporângios, que são as estruturas responsáveis pela produção e liberação dos esporos utilizados na reprodução assexuada da planta[span_57](start_span)[span_57](end_span).
+                </div>
+            </div>
+
+            <!-- Questão 5 -->
+            <div class="activity-item">
+                <p><strong>5. As gimnospermas e as angiospermas apresentam uma característica evolutiva em comum que permitiu que esses grupos conquistassem definitivamente o ambiente terrestre. Que característica é essa e qual a sua importância?[span_58](start_span)[span_58](end_span)</strong></p>
+                <div class="answer">
+                    É o surgimento do <strong>grão de pólen</strong> e do <strong>tubo polínico</strong>[span_59](start_span)[span_59](end_span). Essa novidade permitiu que os gametas masculinos chegassem até os femininos através do vento ou de polinizadores, eliminando a dependência da água líquida para a fecundação e permitindo a colonização dos mais diversos ambientes terrestres secos[span_60](start_span)[span_60](end_span).
+                </div>
+            </div>
+
+            <!-- Questão 6 -->
+            <div class="activity-item">
+                <p><strong>6. Faça uma pesquisa sobre os diferentes tipos de frutos e a relação deles com os mecanismos de dispersão das sementes[span_61](start_span)[span_61](end_span).</strong></p>
+                <div class="answer">
+                    Os frutos podem ser divididos principalmente em carnosos e secos[span_62](start_span)[span_62](end_span):
+                    <br><br>
+                    • <strong>Frutos Carnosos (ex: maçã, tomate):</strong> Geralmente são coloridos, aromáticos e nutritivos para atrair animais que os consomem (zoocoria)[span_63](start_span)[span_63](end_span). As sementes passam pelo trato digestório do animal e são eliminadas intactas com as fezes em locais distantes[span_64](start_span)[span_64](end_span).
+                    <br><br>
+                    • <strong>Frutos Secos (ex: dente-de-leão, carrapicho):</strong> Podem possuir estruturas em formato de "asas" ou pelos para serem carregados pelo vento (anemocoria), ou ganchos/estruturas aderentes que grudam nos pelos de animais ou roupas de pessoas para serem transportados[span_65](start_span)[span_65](end_span).
+                </div>
+            </div>
+        </div>
+
+        <!-- BOTÕES DE NAVEGAÇÃO -->
+        <div class="navigation-buttons">
+            <a href="tema16.html" class="btn btn-prev">← Voltar para o Tema 16</a>
+            <a href="tema25.html" class="btn">Avançar para o Tema 25 ➜</a>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Projeto de Biologia! 🌱</p>
+    </footer>
+
+</body>
+</html>

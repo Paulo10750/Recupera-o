@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 16: Cordados e Fisiologia Comparada 🐆🦅</title>
+    <style>
+        :root {
+            --primary-color: #2a6f97; /* Azul sutil para representar água/cordados */
+            --secondary-color: #61a5c2; /* Azul claro suave */
+            --accent-color: #f4a261; /* Laranja pastel para transição terrestre */
+            --bg-color: #f8fafd; 
+            --card-bg: #ffffff;
+            --text-color: #2c3e50; 
+            --button-color: #4ba3c3;
+            --green-badge: #4a7c59;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', 'Segoe UI', Quicksand, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding-top: 100px; /* Espaço para o menu fixo cute */
+        }
+
+        /* BARRA DO TOPO ESTILO DE APLICATIVO FOFINHO */
+        .top-app-bar {
+            background-color: #ffffff;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(42, 111, 151, 0.08);
+            border-bottom: 3px dashed #e2edf5;
+            padding: 10px 0 5px 0;
+        }
+
+        /* Três Pontinhos Decorativos */
+        .decor-dots {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+
+        .decor-dots span {
+            width: 8px;
+            height: 8px;
+            background-color: var(--button-color);
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+        .decor-dots span:nth-child(2) { background-color: var(--accent-color); }
+        .decor-dots span:nth-child(3) { background-color: var(--green-badge); }
+
+        /* MENU EM LINHA RETA COM ARRASTE EM TOUCH (SCROLL HORIZONTAL) */
+        nav {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 5px 20px 10px 20px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none; /* Firefox */
+        }
+
+        nav::-webkit-scrollbar {
+            display: none; /* Chrome, Safari e Edge */
+        }
+
+        nav a {
+            display: inline-block;
+            color: #7fa2b5;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+            padding: 8px 18px;
+            background-color: #f1f6f9;
+            border-radius: 20px;
+            border: 2px solid transparent;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        nav a:hover {
+            background-color: #e2edf5;
+            color: var(--primary-color);
+            transform: scale(1.05);
+        }
+
+        nav a.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+            box-shadow: 0 4px 10px rgba(42, 111, 151, 0.2);
+        }
+
+        /* CABEÇALHO HERO */
+        header {
+            background: linear-gradient(135deg, #e3f2fd, #f0f4c3);
+            color: var(--primary-color);
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 30px;
+            max-width: 1060px;
+            margin: 20px auto 10px auto;
+            border: 3px dashed #bbdefb;
+        }
+
+        header h1 {
+            font-size: 2.1rem;
+            margin-bottom: 10px;
+            color: #1d3557;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: #457b9d;
+            font-weight: 500;
+        }
+
+        /* CONTAINER PRINCIPAL */
+        .container {
+            max-width: 1060px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        /* TÍTULOS DE SEÇÃO */
+        .section-title {
+            color: #1d3557;
+            margin: 35px 0 15px 5px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* CARTÕES CUTE */
+        .card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 28px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 24px rgba(180, 198, 210, 0.15);
+            border: 1px solid #edf2f7;
+            position: relative;
+        }
+
+        .page-badge {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 4px 14px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .orange-badge {
+            background-color: var(--accent-color);
+        }
+
+        .green-badge {
+            background-color: var(--green-badge);
+        }
+
+        ul {
+            list-style-position: inside;
+            margin-left: 5px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            padding-left: 5px;
+        }
+
+        strong {
+            color: var(--primary-color);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        @media (max-width: 500px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .sub-card {
+            background: #f8fafc;
+            border-left: 5px solid var(--secondary-color);
+            padding: 16px;
+            margin-top: 12px;
+            border-radius: 12px;
+        }
+
+        .alert-box {
+            background-color: #fffaf0;
+            border-left: 5px solid var(--accent-color);
+            padding: 18px;
+            border-radius: 16px;
+            margin-top: 15px;
+            color: #7f4f24;
+        }
+
+        /* TABELAS FISIOLÓGICAS CUTE */
+        .table-container {
+            overflow-x: auto;
+            margin: 15px 0;
+            border-radius: 16px;
+            border: 1px solid #e2edf5;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            background: white;
+        }
+
+        th {
+            background-color: #e3f2fd;
+            color: #1d3557;
+            padding: 12px 15px;
+            font-weight: bold;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-top: 1px solid #edf2f7;
+            font-size: 0.95rem;
+        }
+
+        tr:hover {
+            background-color: #fdfefe;
+        }
+
+        /* BOTÕES DE NAVEGAÇÃO INTER-PÁGINAS */
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            gap: 15px;
+        }
+
+        .btn {
+            background-color: var(--button-color);
+            color: white;
+            text-decoration: none;
+            padding: 14px 30px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1rem;
+            box-shadow: 0 6px 15px rgba(75, 163, 195, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #2a6f97;
+            transform: translateY(-3px);
+        }
+
+        .btn-prev {
+            background-color: #95a5a6;
+            box-shadow: 0 6px 15px rgba(149, 165, 166, 0.3);
+        }
+        .btn-prev:hover { background-color: #7f8c8d; }
+
+        footer {
+            background-color: #e3f2fd;
+            color: #1d3557;
+            text-align: center;
+            padding: 25px 20px;
+            margin-top: 60px;
+            font-weight: bold;
+            border-top: 3px dashed #bbdefb;
+            border-radius: 30px 30px 0 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-app-bar">
+        <div class="decor-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav>
+            <a href="index.html">Tema 7 🌿</a>
+            <a href="tema13.html">Tema 13 🐠</a>
+            <a href="tema14.html">Tema 14 🐸</a>
+            <a href="tema15.html">Tema 15 🧽</a>
+            <a href="tema16.html" class="active">Tema 16 🐆</a>
+            <a href="tema17.html">Tema 17 ⚜️</a>
+            <a href="tema25.html">Tema 25 🌸</a>
+            <a href="tema26.html">Tema 26 🍂</a>
+            <a href="tema27.html">Tema 27 🍄</a>
+        </nav>
+    </div>
+
+    <header>
+        <h1>Tema 16: O Filo dos Cordados 🐾</h1>
+        <p>Evolução, Biodiversidade e Fisiologia Comparada (Páginas 179 a 188)</p>
+    </header>
+
+    <div class="container">
+
+        <h2 class="section-title">📌 Características Gerais dos Cordados</h2>
+        <div class="card">
+            <span class="page-badge">Pág. 179</span>
+            <p>Os cordados englobam animais <strong>pluricelulares</strong>, <strong>heterótrofos</strong>, <strong>celomados</strong> e com <strong>simetria bilateral</strong>. O diferencial exclusivo do grupo está na presença de quatro estruturas anatômicas, manifestadas obrigatoriamente em pelo menos uma fase do desenvolvimento embrionário:</p>
+            
+            <div class="sub-card">
+                • <strong>Cordão Nervoso Dorsal:</strong> Nos vertebrados, migra para a região anterior e diferencia-se dando origem ao encéfalo e à medula espinal.<br>
+                • <strong>Notocorda:</strong> Haste longitudinal flexível de suporte primário. Nos vertebrados verdadeiros, é gradualmente substituída pela coluna vertebral estruturada.<br>
+                • <strong>Fendas Faringianas:</strong> Aberturas na região da faringe que dão origem a estruturas respiratórias (como brânquias) ou elementos do pescoço e mandíbula.<br>
+                • <strong>Cauda Pós-Anal:</strong> Prolongamento de musculatura esquelética posicionado após o esfíncter anal, usada para propulsão ou equilíbrio.
+            </div>
+        </div>
+
+        <h2 class="section-title">📂 Classificação Inicial e Protocordados</h2>
+        <div class="card">
+            <span class="page-badge orange-badge">Pág. 180</span>
+            <div class="grid-2" style="margin-top: 0;">
+                <div class="sub-card" style="border-left-color: var(--accent-color);">
+                    <strong>Urocordados (Tunicares):</strong><br>
+                    Animais marinhos e sésseis quando adultos que filtram partículas na água. A notocorda fica restrita à cauda e aparece unicamente no estágio larval (Ex: <em>Ascídias</em>).
+                </div>
+                <div class="sub-card" style="border-left-color: var(--accent-color);">
+                    <strong>Cefalocordados:</strong><br>
+                    Pequenos animais marinhos fusiformes que vivem semi-enterrados na areia. Mantêm a notocorda e o cordão nervoso dorsal intactos por toda a vida adulta (Ex: <em>Anfioxo</em>).
+                </div>
+            </div>
+            <div class="sub-card" style="margin-top: 15px; border-left-color: var(--green-badge);">
+                <strong>Craniados (Vertebrados):</strong><br>
+                Cordados que desenvolvem uma caixa craniana (cartilaginosa ou óssea) projetada para a proteção mecânica do encéfalo. Divide-se entre os <strong>agnatos</strong> (sem mandíbula) e os <strong>gnatostomados</strong> (com mandíbula).
+            </div>
+        </div>
+
+        <h2 class="section-title">🐟 Os Grupos de Peixes</h2>
+        <div class="card">
+            <span class="page-badge green-badge">Págs. 181 e 182</span>
+            <div class="grid-2" style="margin-top: 0;">
+                <div class="sub-card" style="border-left-color: var(--green-badge);">
+                    <strong>Agnatos (Feiticeiras e Lampreias):</strong><br>
+                    Peixes primitivos e sem mandíbula. Possuem boca em formato circular com ventosas para sugar fluidos e parasitar outros animais. Corpo liso e totalmente desprovido de escamas dérmicas.
+                </div>
+                <div class="sub-card" style="border-left-color: var(--green-badge);">
+                    <strong>Condrictes (Tubarões e Raias):</strong><br>
+                    Peixes com esqueleto inteiramente cartilaginoso. Possuem mandíbula forte, nadadeiras pares, escamas placoides (ásperas) e as <strong>ampolas de Lorenzini</strong> na cabeça, que detectam impulsos elétricos das presas.
+                </div>
+            </div>
+            <div class="sub-card" style="margin-top: 15px; border-left-color: var(--primary-color);">
+                <strong>Osteíctes (Sardinha, Tilápia, Pirarucu):</strong><br>
+                Peixes com esqueleto ósseo consolidado e brânquias protegidas por uma placa móvel chamada <strong>opérculo</strong>. Apresentam a <strong>linha lateral</strong> (captação de vibrações hidrodinâmicas) e a <strong>bexiga natatória</strong>, uma bolsa interna de gás que controla o peso e a flutuabilidade na água de forma controlada.
+            </div>
+        </div>
+
+        <h2 class="section-title">🐸 Anfíbios e Répteis: A Conquista da Terra</h2>
+        
+        <div class="card">
+            <span class="page-badge">Anfíbios (Pág. 183)</span>
+            <p>Foram pioneiros como tetrápodes no ambiente terrestre, mas exibem uma **dependência obrigatória da água**. Seus ovos não possuem casca rígida protetora, e sua pele é fina e vascularizada para manter-se úmida.</p>
+            <p>• <strong>Respiração:</strong> Branquial nos girinos (larvas) e cutânea combinada com pulmonar nos indivíduos adultos.</p>
+            <p>• <strong>Divisão:</strong> <em>Anuros</em> (sapos e rãs, sem cauda e saltadores), <em>Urodelos</em> (salamandras, com cauda) e <em>Ápodes</em> (cobras-cegas, sem membros).</p>
+        </div>
+
+        <div class="card">
+            <span class="page-badge orange-badge">Répteis (Págs. 184 e 185)</span>
+            <p>Conquistaram **definitivamente** o meio terrestre. São classificados como animais <strong>amniotas</strong>: seus ovos contam com casca calcária resistente e anexos embrionários (como o <strong>âmnio</strong>) que evitam a dessecação do embrião.</p>
+            <p>• <strong>Pele e Fisiologia:</strong> Coberta por placas queratinizadas impermeáveis. São <strong>ectotérmicos</strong> (a temperatura corpórea varia conforme o sol/ambiente).</p>
+            <p>• <strong>Estruturas Especiais:</strong> Algumas serpentes usam as <strong>fossetas loreais</strong> para rastrear assinaturas de calor infravermelho emitidas por presas endotérmicas.</p>
+            <p>• <strong>Divisão:</strong> <em>Quelônios</em> (jabutis/tartarugas), <em>Crocodilianos</em> (jacarés) e <em>Escamados</em> (lagartos e cobras).</p>
+        </div>
+
+        <h2 class="section-title">🦅 Aves e Mamíferos: Alta Performance e Endotermia</h2>
+        
+        <div class="grid-2" style="margin-top: 0;">
+            <div class="card" style="margin-bottom: 0;">
+                <span class="page-badge green-badge">Aves (Págs. 186 e 187)</span>
+                <p>Evolutivamente adaptadas para o voo mecânico. Possuem **ossos pneumáticos** (ocos e leves), ausência total de bexiga urinária (redução de carga pesada) e dentes.</p>
+                <div class="sub-card" style="border-left-color: var(--green-badge);">
+                    São <strong>endotérmicas</strong>. Seus pulmões são acoplados a <strong>sacos aéreos</strong>, estruturas anatômicas que garantem fluxo contínuo de oxigênio durante a atividade muscular intensa do voo.
+                </div>
+            </div>
+            <div class="card" style="margin-bottom: 0;">
+                <span class="page-badge orange-badge">Mamíferos (Pág. 188)</span>
+                <p>Compartilham duas novidades evolutivas marcantes: a presença de <strong>pelos corporais</strong> (isolamento térmico eficiente) e <strong>glândulas mamárias</strong> funcionais para a amamentação.</p>
+                <div class="sub-card" style="border-left-color: var(--accent-color);">
+                    • <strong>Monotremados:</strong> Põem ovos (Ornitorrinco).<br>
+                    • <strong>Marsupiais:</strong> Gestação curta concluída em bolsa externa (Canguru).<br>
+                    • <strong>Placentários:</strong> Nutridos via placenta no útero (Humanos).
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">🫁 Fisiologia Comparada dos Vertebrados (Págs. 189 a 191)</h2>
+        <div class="card">
+            <span class="page-badge" style="background-color: #1d3557;">Resumo Fisiológico</span>
+            <p>Veja como os sistemas respiratórios, circulatórios e reprodutivos mudam entre as diferentes classes de vertebrados:</p>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Grupo</th>
+                            <th>Tipo de Respiração</th>
+                            <th>Morfologia do Coração</th>
+                            <th>Tipo de Circulação</th>
+                            <th>Fecundação e Desenvolvimento</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Peixes</strong></td>
+                            <td>Branquial</td>
+                            <td>2 Câmaras (1 Átrio, 1 Ventrículo)</td>
+                            <td>Simples (só passa sangue venoso)</td>
+                            <td>Externa/Interna (Ovíparos ou Ovovivíparos)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Anfíbios</strong></td>
+                            <td>Branquial (larva), Pulmonar e Cutânea (adulto)</td>
+                            <td>3 Câmaras (2 Átrios, 1 Ventrículo)</td>
+                            <td>Dupla e Incompleta (mistura de sangue)</td>
+                            <td>Externa na água (Ovíparos sem casca)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Répteis</strong></td>
+                            <td>Pulmonar</td>
+                            <td>3 Câmaras (Ventrículo parcialmente separado)</td>
+                            <td>Dupla e Incompleta (mistura residual)</td>
+                            <td>Interna (Ovíparos com casca amniótica)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Aves</strong></td>
+                            <td>Pulmonar (com sacos aéreos)</td>
+                            <td>4 Câmaras (2 Átrios, 2 Ventrículos)</td>
+                            <td>Dupla e Completa (sem nenhuma mistura)</td>
+                            <td>Interna (Ovíparos com casca calcária)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mamíferos</strong></td>
+                            <td>Pulmonar (presença de diafragma)</td>
+                            <td>4 Câmaras (2 Átrios, 2 Ventrículos)</td>
+                            <td>Dupla e Completa (sem nenhuma mistura)</td>
+                            <td>Interna (Majoritariamente Vivíparos Placentários)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="alert-box">
+                📌 <strong>Mecanismo de Ventilação nos Anfíbios:</strong> Diferente de nós, os sapos não possuem costelas móveis ou músculo diafragma para inflar a cavidade torácica. Eles usam movimentos rápidos do <strong>assoalho bucal</strong>, agindo como uma bomba hidráulica mecânica para empurrar ativamente o ar atmosférico para o interior dos pulmões.
+            </div>
+        </div>
+
+        <div class="navigation-buttons">
+            <a href="tema15.html" class="btn btn-prev">← Voltar para o Tema 15</a>
+            <a href="tema17.html" class="btn">Avançar para o Tema 17 ➜</a>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Projeto de Biologia! 🐆🌿</p>
+    </footer>
+
+</body>
+</html>

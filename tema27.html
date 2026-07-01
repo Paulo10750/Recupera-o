@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 27: Introdução à Ecologia 🌎🌿</title>
+    <style>
+        :root {
+            --primary-color: #2a9d8f; /* Verde-folha equilibrado para ecologia */
+            --secondary-color: #e9c46a; /* Amarelo/Areia pastel para energia e solo */
+            --accent-earth: #f4a261; /* Laranja/Terra suave */
+            --water-blue: #e76f51; /* Coral/Terracota para níveis tróficos */
+            --bg-color: #f4f9f4; /* Fundo esverdeado bem clarinho e fofo */
+            --card-bg: #ffffff;
+            --text-color: #264653; 
+            --button-color: #76c893;
+            --purple-badge: #9c8cb9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', 'Segoe UI', Quicksand, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding-top: 100px; /* Espaço para o menu fixo cute */
+        }
+
+        /* BARRA DO TOPO ESTILO DE APLICATIVO FOFINHO */
+        .top-app-bar {
+            background-color: #ffffff;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(42, 157, 143, 0.08);
+            border-bottom: 3px dashed #d8f3dc;
+            padding: 10px 0 5px 0;
+        }
+
+        /* Três Pontinhos Decorativos */
+        .decor-dots {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+
+        .decor-dots span {
+            width: 8px;
+            height: 8px;
+            background-color: var(--button-color);
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+        .decor-dots span:nth-child(2) { background-color: var(--secondary-color); }
+        .decor-dots span:nth-child(3) { background-color: var(--accent-earth); }
+
+        /* MENU EM LINHA RETA COM ARRASTE EM TOUCH (SCROLL HORIZONTAL) */
+        nav {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 5px 20px 10px 20px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none; /* Firefox */
+        }
+
+        nav::-webkit-scrollbar {
+            display: none; /* Chrome, Safari e Edge */
+        }
+
+        nav a {
+            display: inline-block;
+            color: #83b4b0;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+            padding: 8px 18px;
+            background-color: #f0f7f4;
+            border-radius: 20px;
+            border: 2px solid transparent;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        nav a:hover {
+            background-color: #d8f3dc;
+            color: var(--primary-color);
+            transform: scale(1.05);
+        }
+
+        nav a.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+            box-shadow: 0 4px 10px rgba(42, 157, 143, 0.2);
+        }
+
+        /* CABEÇALHO HERO */
+        header {
+            background: linear-gradient(135deg, #d8f3dc, #fefae0);
+            color: var(--primary-color);
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 30px;
+            max-width: 1060px;
+            margin: 20px auto 10px auto;
+            border: 3px dashed #b7e4c7;
+        }
+
+        header h1 {
+            font-size: 2.1rem;
+            margin-bottom: 10px;
+            color: #1d3557;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: #2a9d8f;
+            font-weight: 500;
+        }
+
+        /* CONTAINER PRINCIPAL */
+        .container {
+            max-width: 1060px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        /* TÍTULOS DE SEÇÃO */
+        .section-title {
+            color: #1d3557;
+            margin: 35px 0 15px 5px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* CARTÕES CUTE */
+        .card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 28px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 24px rgba(42, 157, 143, 0.06);
+            border: 1px solid #e9ecef;
+            position: relative;
+        }
+
+        .page-badge {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 4px 14px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .yellow-badge {
+            background-color: #d9a013;
+        }
+
+        .earth-badge {
+            background-color: #e76f51;
+        }
+
+        .purple-badge {
+            background-color: var(--accent-purple);
+        }
+
+        ul {
+            list-style-position: inside;
+            margin-left: 5px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            padding-left: 5px;
+        }
+
+        strong {
+            color: var(--primary-color);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        @media (max-width: 500px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .sub-card {
+            background: #fafdfa;
+            border-left: 5px solid var(--button-color);
+            padding: 16px;
+            margin-top: 12px;
+            border-radius: 12px;
+        }
+
+        /* BOTÕES DE NAVEGAÇÃO INTER-PÁGINAS */
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            gap: 15px;
+        }
+
+        .btn {
+            background-color: var(--button-color);
+            color: white;
+            text-decoration: none;
+            padding: 14px 30px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1rem;
+            box-shadow: 0 6px 15px rgba(118, 200, 147, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .btn-prev {
+            background-color: #95a5a6;
+            box-shadow: 0 6px 15px rgba(149, 165, 166, 0.3);
+        }
+        .btn-prev:hover { background-color: #7f8c8d; }
+
+        footer {
+            background-color: #d8f3dc;
+            color: #1d3557;
+            text-align: center;
+            padding: 25px 20px;
+            margin-top: 60px;
+            font-weight: bold;
+            border-top: 3px dashed #b7e4c7;
+            border-radius: 30px 30px 0 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA FIXA SUPERIOR ESTILO CUTE APP -->
+    <div class="top-app-bar">
+        <div class="decor-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav>
+            <a href="index.html">Tema 7 🌿</a>
+            <a href="tema13.html">Tema 13 🐠</a>
+            <a href="tema14.html">Tema 14 🐸</a>
+            <a href="tema15.html">Tema 15 🧽</a>
+            <a href="tema16.html">Tema 16 🐆</a>
+            <a href="tema17.html">Tema 17 ⚜️</a>
+            <a href="tema25.html">Tema 25 🚽</a>
+            <a href="tema26.html">Tema 26 🛡️</a>
+            <a href="tema27.html" class="active">Tema 27 🍄</a>
+        </nav>
+    </div>
+
+    <header>
+        <h1>Tema 27: Introdução à Ecologia 🌎</h1>
+        <p>Interações, Organização da Vida, Fluxo Energético e Cadeias Tróficas (Páginas 297 a 302)</p>
+    </header>
+
+    <div class="container">
+
+        <!-- O que é Ecologia -->
+        <h2 class="section-title">🌎 1. O que é Ecologia?</h2>
+        <div class="card">
+            <span class="page-badge">Pág. 297</span>
+            <p>A <strong>Ecologia</strong> é o ramo científico encarregado de investigar as complexas interações estabelecidas pelos seres vivos entre si e com os ambientes dinâmicos em que habitam[span_0](start_span)[span_0](end_span).</p>
+            
+            <div class="grid-2">
+                <div class="sub-card" style="border-left-color: var(--button-color);">
+                    <strong>Fatores Biotípicos (ou Bióticos):</strong><br>
+                    Representam todos os elementos vivos que constituem e integram um ecossistema[span_1](start_span)[span_1](end_span).<br>
+                    • <em>Exemplos:</em> Vegetais, animais, colônias bacterianas e comunidades fúngicas[span_2](start_span)[span_2](end_span).
+                </div>
+
+                <div class="sub-card" style="border-left-color: var(--secondary-color);">
+                    <strong>Fatores Abióticos:</strong><br>
+                    Constituem as frações físicas, químicas e não vivas do meio que condicionam diretamente a vida[span_3](start_span)[span_3](end_span).<br>
+                    • <em>Exemplos:</em> Recursos hídricos, luminosidade solar, regimes térmicos, características do solo, taxas de umidade e índices de salinidade[span_4](start_span)[span_4](end_span).
+                </div>
+            </div>
+        </div>
+
+        <!-- Níveis de Organização em Ecologia -->
+        <h2 class="section-title">📈 2. Níveis de Organização em Ecologia</h2>
+        <div class="card">
+            <span class="page-badge yellow-badge">Pág. 298</span>
+            <p>A organização da biosfera é analisada sob uma escala contínua de complexidade ecológica crescente[span_5](start_span)[span_5](end_span):</p>
+            
+            <ul>
+                <li><strong>Organismo (ou Indivíduo):</strong> A unidade biológica isolada representante de uma determinada espécie[span_6](start_span)[span_6](end_span).</li>
+                <li><strong>População:</strong> Agrupamento de indivíduos pertencentes à mesmíssima espécie que compartilham uma área espacial comum em um intervalo de tempo simultâneo[span_7](start_span)[span_7](end_span).</li>
+                <li><strong>Comunidade (ou Biocenose):</strong> Conjunto de populações distintas de variadas espécies que coabitam um mesmo território ecológico e mantêm interações diretas ou indiretas[span_8](start_span)[span_8](end_span).</li>
+                <li><strong>Ecossistema:</strong> Unidade funcional que integra a comunidade ativa (fatores bióticos) ao meio físico circundante (fatores abióticos), regulando as trocas mútuas de energia e elementos minerais[span_9](start_span)[span_9](end_span).</li>
+                <li><strong>Biosfera:</strong> O patamar ecológico máximo[span_10](start_span)[span_10](end_span). Abrange a totalidade combinada de todos os ecossistemas terrestres, contemplando todos os pontos do planeta onde o fenômeno da vida se faz presente[span_11](start_span)[span_11](end_span).</li>
+            </ul>
+        </div>
+
+        <!-- Habitat vs. Nicho Ecológico -->
+        <h2 class="section-title">🏡 3. Habitat vs. Nicho Ecológico</h2>
+        <div class="card">
+            <span class="page-badge earth-badge">Pág. 299</span>
+            <p>Dois pilares conceituais fundamentais para delimitar as especificidades de uma espécie na teia da natureza[span_12](start_span)[span_12](end_span):</p>
+            
+            <div class="grid-2" style="margin-top: 0;">
+                <div class="sub-card" style="border-left-color: var(--earth-badge);">
+                    <strong>Habitat ("Endereço"):</strong><br>
+                    Refere-se ao espaço geográfico e físico delimitado onde uma espécie pode ser habitualmente encontrada[span_13](start_span)[span_13](end_span).<br>
+                    • <em>Exemplo clássico:</em> O bioma da savana africana atua como o habitat característico do leão[span_14](start_span)[span_14](end_span).
+                </div>
+
+                <div class="sub-card" style="border-left-color: var(--primary-color);">
+                    <strong>Nicho Ecológico ("Profissão"):</strong><br>
+                    Conduz ao papel funcional, rotina e espectro adaptativo completo exercido pelo organismo no meio[span_15](start_span)[span_15](end_span). Inclui suas preferências alimentares, estratégias reprodutivas, ritmos de atividade (diurno ou noturno), táticas antipredação e limites de tolerância ambiental a variações climáticas[span_16](start_span)[span_16](end_span).
+                </div>
+            </div>
+        </div>
+
+        <!-- Fluxo de Energia e Cadeias Alimentares -->
+        <h2 class="section-title">☀️ 4. Fluxo de Energia e Cadeias Alimentares</h2>
+        <div class="card">
+            <span class="page-badge" style="background-color: #9c8cb9;">Págs. 300 e 301</span>
+            <p>A energia radiante incide na Terra via luz solar e percorre as comunidades biológicas em um **fluxo unidirecional**, reduzindo-se paulatinamente a cada transferência na forma de calor dissipado[span_17](start_span)[span_17](end_span).</p>
+            
+            <div class="sub-card" style="border-left-color: #2a9d8f;">
+                <strong>Produtores (Autótrofos):</strong> Organismos pioneiros capazes de sintetizar compostos orgânicos próprios (majoritariamente por vias fotossintéticas, a exemplo das plantas e algas)[span_18](start_span)[span_18](end_span). Formam a base sustentadora primária de qualquer ecossistema planetário[span_19](start_span)[span_19](end_span).
+            </div>
+            
+            <div class="sub-card" style="border-left-color: #e76f51;">
+                <strong>Consumidores (Heterótrofos):</strong> Seres que necessitam obrigatoriamente ingerir outros organismos para a assimilação energética[span_20](start_span)[span_20](end_span).
+                <ul style="margin-top: 5px; margin-left: 20px;">
+                    <li><strong>Consumidor Primário:</strong> Nutre-se diretamente dos produtores autotróficos (Herbívoros)[span_21](start_span)[span_21](end_span).</li>
+                    <li><strong>Consumidor Secundário:</strong> Alimenta-se de consumidores primários (Carnívoros)[span_22](start_span)[span_22](end_span).</li>
+                    <li><strong>Consumidor Terciário:</strong> Preda os consumidores secundários, prosseguindo na ordem trófica[span_23](start_span)[span_23](end_span).</li>
+                </ul>
+            </div>
+            
+            <div class="sub-card" style="border-left-color: #e9c46a;">
+                <strong>Decompositores:</strong> Representados por fungos e bactérias heterótrofas que clivam compostos orgânicos complexos originários de matéria morta (cadáveres, serapilheira e excretas)[span_24](start_span)[span_24](end_span). Eles devolvem ao solo elementos minerais simples que serão reaproveitados pelos produtores, garantindo o fechamento e a **ciclagem perpétua da matéria**[span_25](start_span)[span_25](end_span).
+            </div>
+        </div>
+
+        <!-- Cadeia Alimentar vs. Teia Alimentar -->
+        <h2 class="section-title">🕸️ Cadeia Alimentar vs. Teia Alimentar</h2>
+        <div class="card">
+            <span class="page-badge" style="background-color: #264653;">Pág. 301</span>
+            
+            <div class="grid-2" style="margin-top: 0;">
+                <div class="sub-card" style="border-left-color: #264653;">
+                    <strong>Cadeia Alimentar:</strong><br>
+                    Desenho linear, unificado e sequencial simplificado que ilustra de forma direta o fluxo de transferência de matéria alimentar entre níveis específicos de um ecossistema[span_26](start_span)[span_26](end_span).
+                </div>
+
+                <div class="sub-card" style="border-left-color: #76c893;">
+                    <strong>Teia Alimentar:</strong><br>
+                    Um arranjo em rede de múltiplas cadeias alimentares sobrepostas e ramificadas[span_27](start_span)[span_27](end_span). Retrata com exatidão a dinâmica real do meio biótico, onde a dieta dos consumidores flutua (como um gavião capturando cobras, roedores ou anfíbios conforme a oferta)[span_28](start_span)[span_28](end_span).
+                </div>
+            </div>
+        </div>
+
+        <!-- BOTÕES DE NAVEGAÇÃO -->
+        <div class="navigation-buttons">
+            <a href="tema26.html" class="btn btn-prev">← Voltar para o Tema 26</a>
+            <span class="btn" style="background-color: #95a5a6; cursor: not-allowed; box-shadow: none;">Último Tema do Bloco ✨</span>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>◇Recuperação de Biologia!🌾</p>
+    </footer>
+
+</body>
+</html>

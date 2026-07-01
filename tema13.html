@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 13: Classificação e Evolução dos Seres Vivos 🐠🌿</title>
+    <style>
+        :root {
+            --primary-color: #4a7c59; /* Verde folha fofo */
+            --secondary-color: #68b0ab; /* Verde água suave */
+            --accent-color: #9c8cb9; /* Roxo pastel para biologia/evolução */
+            --bg-color: #fafdfb; 
+            --card-bg: #ffffff;
+            --text-color: #334e3a; 
+            --button-color: #76c893;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', 'Segoe UI', Quicksand, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding-top: 100px; /* Espaço para o menu fixo cute */
+        }
+
+        /* BARRA DO TOPO ESTILO DE APLICATIVO FOFINHO */
+        .top-app-bar {
+            background-color: #ffffff;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(74, 124, 89, 0.08);
+            border-bottom: 3px dashed #e2efe7;
+            padding: 10px 0 5px 0;
+        }
+
+        /* Três Pontinhos Decorativos */
+        .decor-dots {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+
+        .decor-dots span {
+            width: 8px;
+            height: 8px;
+            background-color: var(--button-color);
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+        .decor-dots span:nth-child(2) { background-color: var(--accent-color); }
+        .decor-dots span:nth-child(3) { background-color: var(--secondary-color); }
+
+        /* MENU EM LINHA RETA COM ARRASTE EM TOUCH (SCROLL HORIZONTAL) */
+        nav {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 5px 20px 10px 20px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none; /* Firefox */
+        }
+
+        nav::-webkit-scrollbar {
+            display: none; /* Chrome, Safari e Edge */
+        }
+
+        nav a {
+            display: inline-block;
+            color: #7fa98a;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+            padding: 8px 18px;
+            background-color: #f1f8f4;
+            border-radius: 20px;
+            border: 2px solid transparent;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        nav a:hover {
+            background-color: #e2efe7;
+            color: var(--primary-color);
+            transform: scale(1.05);
+        }
+
+        nav a.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+            box-shadow: 0 4px 10px rgba(74, 124, 89, 0.2);
+        }
+
+        /* CABEÇALHO HERO */
+        header {
+            background: linear-gradient(135deg, #eaf5ee, #f0f8f4);
+            color: var(--primary-color);
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 30px;
+            max-width: 1060px;
+            margin: 20px auto 10px auto;
+            border: 3px dashed #cde4d5;
+        }
+
+        header h1 {
+            font-size: 2.3rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: #618c6f;
+            font-weight: 500;
+        }
+
+        /* CONTAINER PRINCIPAL */
+        .container {
+            max-width: 1060px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        /* TÍTULOS DE SEÇÃO */
+        .section-title {
+            color: var(--primary-color);
+            margin: 35px 0 15px 5px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* CARTÕES CUTE */
+        .card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 28px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 24px rgba(165, 198, 175, 0.12);
+            border: 1px solid #edf5f0;
+            position: relative;
+        }
+
+        .page-badge {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 4px 14px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 8px rgba(156, 140, 185, 0.2);
+        }
+
+        ul {
+            list-style-position: inside;
+            margin-left: 5px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            padding-left: 5px;
+        }
+
+        strong {
+            color: var(--primary-color);
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .sub-card {
+            background: #f7faf8;
+            border-left: 5px solid var(--secondary-color);
+            padding: 16px;
+            margin-top: 12px;
+            border-radius: 12px;
+        }
+
+        .alert-box {
+            background-color: #f6fdf9;
+            border-left: 5px solid var(--primary-color);
+            padding: 18px;
+            border-radius: 12px;
+            margin-top: 15px;
+        }
+
+        /* ATIVIDADES */
+        .activities-section {
+            background-color: #fffbf0;
+            border: 3px dashed #ffeaa7;
+            border-radius: 24px;
+            padding: 28px;
+            margin-top: 45px;
+        }
+
+        .activities-section h2 {
+            color: #b38600;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .activity-item {
+            background: white;
+            padding: 20px;
+            border-radius: 18px;
+            margin-bottom: 15px;
+            border: 1px solid #fff2cc;
+            box-shadow: 0 4px 10px rgba(230, 210, 150, 0.15);
+        }
+
+        .answer {
+            background-color: #edf7ed;
+            padding: 12px 16px;
+            border-radius: 12px;
+            margin-top: 12px;
+            border-left: 5px solid #66bb6a;
+            color: #2e7d32;
+        }
+
+        /* BOTÕES DE NAVEGAÇÃO INTER-PÁGINAS */
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            gap: 15px;
+        }
+
+        .btn {
+            background-color: var(--button-color);
+            color: white;
+            text-decoration: none;
+            padding: 14px 30px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1rem;
+            box-shadow: 0 6px 15px rgba(118, 200, 147, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #52b788;
+            transform: translateY(-3px);
+        }
+
+        .btn-prev {
+            background-color: #95a5a6;
+            box-shadow: 0 6px 15px rgba(149, 165, 166, 0.3);
+        }
+        .btn-prev:hover { background-color: #7f8c8d; }
+
+        footer {
+            background-color: #eaf5ee;
+            color: var(--primary-color);
+            text-align: center;
+            padding: 25px 20px;
+            margin-top: 60px;
+            font-weight: bold;
+            border-top: 3px dashed #cde4d5;
+            border-radius: 30px 30px 0 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-app-bar">
+        <div class="decor-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav>
+            <a href="index.html">Tema 7 🌿</a>
+            <a href="tema13.html" class="active">Tema 13 🐠</a>
+            <a href="tema14.html">Tema 14 🐸</a>
+            <a href="tema15.html">Tema 15 🦅</a>
+            <a href="tema16.html">Tema 16 🐆</a>
+            <a href="tema17.html">Tema 17 ⚜️</a>
+            <a href="tema25.html">Tema 25 🌸</a>
+            <a href="tema26.html">Tema 26 🍂</a>
+            <a href="tema27.html">Tema 27 🍄</a>
+        </nav>
+    </div>
+
+    <header>
+        <h1>Tema 13: Classificação e Evolução ✨</h1>
+        <p>Resumo de Taxonomia, Sistemática e Filogenia</p>
+    </header>
+
+    <div class="container">
+
+        <h2 class="section-title">✍️ Nomenclatura Binomial (Lineu)</h2>
+        <div class="card">
+            <p>Regras essenciais para nomear espécies de forma padronizada usando dois termos em latim:</p>
+            <div class="sub-card">
+                • <strong>Primeiro termo:</strong> Refere-se ao <strong>Gênero</strong> (deve começar sempre com inicial maiúscula).<br>
+                • <strong>Segundo termo:</strong> Refere-se ao <strong>epíteto específico</strong> (deve começar sempre com inicial minúscula).<br>
+                • <strong>Destaque visual:</strong> O nome completo da espécie deve obrigatoriamente aparecer destacado no texto (em <em>itálico</em> quando digitado ou <u>sublinhado</u> quando feito à mão).
+            </div>
+        </div>
+
+        <h2 class="section-title">📊 Categorias Taxonômicas (Táxons)</h2>
+        <div class="card">
+            <p>Os seres vivos são organizados e agrupados em categorias hierárquicas, caminhando do nível mais abrangente e genérico até o mais específico:</p>
+            <div class="sub-card" style="text-align: center; font-size: 1.1rem; border-left-color: var(--accent-color); background-color: #faf9fc;">
+                <strong>Reino</strong> ➔ <strong>Filo</strong> ➔ <strong>Classe</strong> ➔ <strong>Ordem</strong> ➔ <strong>Família</strong> ➔ <strong>Gênero</strong> ➔ <strong>Espécie</strong>
+            </div>
+        </div>
+
+        <h2 class="section-title">🔬 Sistemas de Classificação</h2>
+        <div class="card">
+            <p>Ao longo da história da ciência, os critérios e modelos de organização evoluíram significativamente devido a novas descobertas:</p>
+            <ul>
+                <li><strong>Modelo Inicial:</strong> Dividia a natureza em apenas 2 reinos básicos (Plantas e Animais).</li>
+                <li><strong>Modelo dos 5 Reinos:</strong> Divisão clássica entre <strong>Monera, Protista, Fungi, Plantae e Animalia</strong>.</li>
+                <li><strong>Modelo Atual (3 Domínios):</strong> Organizado em <strong>Bacteria, Archaea e Eukarya</strong>, fundamentado no parentesco evolutivo real e em profundas análises moleculares e genéticas.</li>
+            </ul>
+        </div>
+
+        <h2 class="section-title">🌿 Relações Evolutivas (Cladogramas)</h2>
+        <div class="card">
+            <p>Cladogramas são diagramas visuais estruturados para demonstrar a história evolutiva e o parentesco entre os grupos:</p>
+            <div class="grid-3">
+                <div class="sub-card"><strong>A Raiz:</strong> Representa a base do cladograma e indica a presença do linhagem ancestral.</div>
+                <div class="sub-card"><strong>Os Ramos:</strong> Correspondem às linhas de ramificação que traçam os caminhos evolutivos ao longo do tempo.</div>
+                <div class="sub-card"><strong>Os Nós:</strong> Pontos de divisão exatos de onde saem novos ramos. Indica um evento de especiação a partir de um ancestral comum.</div>
+            </div>
+            <div class="alert-box">
+                💡 <strong>Grupos Monofiléticos:</strong> São aqueles grupos que compreendem, obrigatoriamente, um ancestral comum exclusivo e todos os seus descendentes diretos sem deixar nenhum de fora.
+            </div>
+        </div>
+
+        <h2 class="section-title">🧭 Sobre este Conteúdo</h2>
+        <div class="card" style="border-left: 5px solid var(--accent-color);">
+            <p>Este bloco corresponde perfeitamente ao estudo de <strong>Taxonomia, Sistemática e Filogenia</strong>. É a base biológica indispensável para dar início ao estudo minucioso de cada reino e domínio ecológico (como vírus, bactérias, fungos, plantas e animais) e da própria Ecologia!</p>
+        </div>
+
+        <div class="activities-section">
+            <h2>📝 Questões e Exercícios Respondidos</h2>
+            
+            <div class="activity-item">
+                <p><strong>1. Quais regras devem ser seguidas no sistema de nomenclatura binomial dos seres vivos?</strong></p>
+                <div class="answer">
+                    <strong>Resposta:</strong><br>
+                    • Os nomes científicos devem ser sempre escritos em latim.<br>
+                    • Devem ser destacados no texto: em <em>itálico</em> quando impressos/digitados ou <u>sublinhados</u> quando escritos à mão.<br>
+                    • O nome é estritamente composto por duas palavras: a primeira indica o gênero (com inicial maiúscula) e a segunda é o epíteto específico (com inicial minúscula).
+                </div>
+            </div>
+
+            <div class="activity-item">
+                <p><strong>2. Analise o cladograma a seguir que apresenta parte da filogenia da ordem Carnivora. Julgue as afirmativas de V ou F e corrija as falsas:</strong></p>
+                
+                <div style="margin-top: 10px; padding-left: 10px;">
+                    <p><em>I. Os carnívoros apresentam um ancestral comum.</em></p>
+                    <div class="answer" style="background-color: #f1f8f5; border-left-color: #4a7c59; color: #27ae60;"><strong>Veradeira.</strong> Todos os ramos partem de um mesmo ponto de origem à esquerda.</div>
+                    
+                    <p style="margin-top: 10px;"><em>II. Todas as espécies representadas pertencem à mesma família.</em></p>
+                    <div class="answer" style="background-color: #fff5f5; border-left-color: #e74c3c; color: #c0392b;"><strong>Falsa.</strong> Elas pertencem à mesma Ordem (Carnivora), mas estão divididas em três famílias diferentes no diagrama: Felidae, Mustelidae e Canidae.</div>
+
+                    <p style="margin-top: 10px;"><em>III. O leopardo e o texugo-americano são mais aparentados entre si do que o coiote e o lobo-cinzento.</em></p>
+                    <div class="answer" style="background-color: #fff5f5; border-left-color: #e74c3c; color: #c0392b;"><strong>Falsa.</strong> O coiote e o lobo-cinzento são muito mais aparentados entre si, pois compartilham um ancestral comum mais recente por estarem dentro do mesmo gênero (<em>Canis</em>).</div>
+
+                    <p style="margin-top: 10px;"><em>IV. O número 1 representa o ancestral comum mais recente da família Felidae.</em></p>
+                    <div class="answer" style="background-color: #fff5f5; border-left-color: #e74c3c; color: #c0392b;"><strong>Falsa.</strong> O número 1 indica o nó ancestral de toda a ordem Carnivora representada no gráfico.</div>
+
+                    <p style="margin-top: 10px;"><em>V. O cladograma apresenta apenas uma espécie representante da família Felidae.</em></p>
+                    <div class="answer" style="background-color: #f1f8f5; border-left-color: #4a7c59; color: #27ae60;"><strong>Veradeira.</strong> Apenas o leopardo (<em>Panthera pardus</em>) aparece representando a família dos felídeos.</div>
+
+                    <p style="margin-top: 10px;"><em>VI. Entre as espécies representadas, estão indicados cinco gêneros.</em></p>
+                    <div class="answer" style="background-color: #fff5f5; border-left-color: #e74c3c; color: #c0392b;"><strong>Falsa.</strong> Estão indicados apenas quatro gêneros: <em>Panthera</em>, <em>Taxidea</em>, <em>Lutra</em> e <em>Canis</em>.</div>
+
+                    <p style="margin-top: 10px;"><em>VII. Todas as espécies listadas pertencem ao mesmo filo.</em></p>
+                    <div class="answer" style="background-color: #f1f8f5; border-left-color: #4a7c59; color: #27ae60;"><strong>Veradeira.</strong> Como pertencem à classe dos mamíferos e à ordem Carnivora, todas integram o filo Chordata.</div>
+
+                    <p style="margin-top: 10px;"><em>VIII. O número 1 indica o ancestral comum mais recente entre o texugo-americano, a lontra-europeia, o coiote e o lobo-cinzento.</em></p>
+                    <div class="answer" style="background-color: #fff5f5; border-left-color: #e74c3c; color: #c0392b;"><strong>Falsa.</strong> O número 1 é o ancestral de todos os animais mostrados, incluindo o leopardo. O ancestral comum exclusivo desses quatro animais citados seria o nó subsequente, localizado logo após a separação do ramo do leopardo.</div>
+                </div>
+            </div>
+
+            <div class="activity-item">
+                <p><strong>3. Analise as informações da ficha técnica (Nome científico: <em>Lutra longicaudis</em> / Nome popular: Lontra / Características: Mamífero semiaquático...):</strong></p>
+                <div class="answer">
+                    <strong>a) A que gênero pertence a lontra?</strong><br>
+                    Resposta: Gênero <em>Lutra</em>.<br><br>
+                    <strong>b) A que espécie pertence a lontra?</strong><br>
+                    Resposta: Espécie <em>Lutra longicaudis</em>.<br><br>
+                    <strong>c) Classificação taxonômica completa obtida via pesquisa:</strong><br>
+                    • Reino: Animalia | • Filo: Chordata | • Classe: Mammalia | • Ordem: Carnivora | • Família: Mustelidae<br><br>
+                    <strong>d) Atividade prática pessoal/em grupo:</strong><br>
+                    Critérios e fichas devem ser elaborados no caderno e discutidos junto à classe.
+                </div>
+            </div>
+
+            <div class="activity-item">
+                <p><strong>4. Com base nos dados da atualização da Lista de Espécies Ameaçadas de Extinção no Brasil de junho de 2022 (MMA), responda:</strong></p>
+                <div class="answer">
+                    <strong>a) Identifique o nome popular das espécies citadas no texto:</strong><br>
+                    Resposta: Pica-pau-de-cara-canela, beija-flor-das-costas-violetas, albatroz-real-do-norte e cotinga-crejá.<br><br>
+                    <strong>b) Identifique o nome científico das espécies citadas no texto:</strong><br>
+                    Resposta: <em>Celeus galeatus</em>, <em>Thalurania watertonii</em>, <em>Diomedea sanfordi</em> e <em>Cotinga maculata</em>.<br><br>
+                    <strong>c) A que gênero pertencem essas espécies?</strong><br>
+                    Resposta:<br>
+                    • Pica-pau: gênero <em>Celeus</em><br>
+                    • Beija-flor: gênero <em>Thalurania</em><br>
+                    • Albatroz: gênero <em>Diomedea</em><br>
+                    • Cotinga-crejá: gênero <em>Cotinga</em>
+                </div>
+            </div>
+        </div>
+
+        <div class="navigation-buttons">
+            <a href="index.html" class="btn btn-prev">← Voltar para o Tema 7</a>
+            <a href="tema14.html" class="btn">Avançar para o Tema 14 ➜</a>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Projeto de Biologia! 🐠</p>
+    </footer>
+
+</body>
+</html>
